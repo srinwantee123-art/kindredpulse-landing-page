@@ -143,6 +143,18 @@ function Landing() {
 
   const amounts = ["25", "50", "100"];
 
+  const impactFn = useServerFn(getImpactMetrics);
+  const { data: impact } = useQuery(impactQueryOptions(impactFn));
+  const lives = impact?.lives ?? 0;
+  const meals = impact?.meals ?? 0;
+  const animals = impact?.animals ?? 0;
+  const raised = impact?.monthly.raisedCents ?? 0;
+  const goal = impact?.monthly.goalCents ?? 1;
+  const pct = impact?.monthly.pct ?? 0;
+  const refreshed = useRelativeTime(impact?.updatedAt);
+  const usd = (cents: number) =>
+    `$${Math.round(cents / 100).toLocaleString()}`;
+
   return (
     <main className="min-h-screen bg-background text-foreground antialiased">
       {/* NAV */}
