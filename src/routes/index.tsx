@@ -28,7 +28,9 @@ export const Route = createFileRoute("/")({
   component: Landing,
 });
 
-function impactQueryOptions(fn: typeof getImpactMetrics) {
+type ImpactData = Awaited<ReturnType<typeof getImpactMetrics>>;
+
+function impactQueryOptions(fn: () => Promise<ImpactData>) {
   return queryOptions({
     queryKey: ["impact-metrics"],
     queryFn: () => fn(),
