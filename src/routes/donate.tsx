@@ -20,63 +20,80 @@ import {
 } from "lucide-react";
 
 export const Route = createFileRoute("/donate")({
-  validateSearch: (search: Record<string, unknown>) => {
+  validateSearch: (search: Record<string, unknown>): { cause?: string } => {
     return {
-      cause: (search.cause as string) || "general",
+      cause: typeof search.cause === "string" ? search.cause : undefined,
     };
   },
   component: DonatePage,
 });
 
-const TESTIMONIALS: Record<string, { quote: string; author: string; role: string; location: string; image: string }> = {
+const TESTIMONIALS: Record<
+  string,
+  { quote: string; author: string; role: string; location: string; image: string }
+> = {
   education: {
-    quote: "Receiving the STEM scholarship and solar tablet changed everything. I am now training to become my village's first software engineer.",
+    quote:
+      "Receiving the STEM scholarship and solar tablet changed everything. I am now training to become my village's first software engineer.",
     author: "Aminata Diallo",
     role: "Scholarship Recipient",
     location: "Rural Kenya",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=400&q=80",
   },
   food: {
-    quote: "The solar irrigation pump doubled our crop harvest during the dry season. We can now feed our children and supply local markets.",
+    quote:
+      "The solar irrigation pump doubled our crop harvest during the dry season. We can now feed our children and supply local markets.",
     author: "Mateo Silva",
     role: "Farming Co-op Leader",
     location: "Chiquimula, Guatemala",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=400&q=80",
   },
   medical: {
-    quote: "My 4-year-old son received emergency surgery within 48 hours of the mobile surgical unit arriving. I will forever be grateful.",
+    quote:
+      "My 4-year-old son received emergency surgery within 48 hours of the mobile surgical unit arriving. I will forever be grateful.",
     author: "Priya Sharma",
     role: "Mother & Community Member",
     location: "Sylhet, Bangladesh",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80",
   },
   disaster: {
-    quote: "Clean water was available at our shelter within hours after the cyclone destroyed local wells. It saved hundreds from waterborne disease.",
+    quote:
+      "Clean water was available at our shelter within hours after the cyclone destroyed local wells. It saved hundreds from waterborne disease.",
     author: "Carlos Reyes",
     role: "Emergency Volunteer",
     location: "Cebu, Philippines",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80",
   },
   women: {
-    quote: "With the zero-interest microgrant, I expanded my artisan weaving workshop and hired four women from my neighborhood.",
+    quote:
+      "With the zero-interest microgrant, I expanded my artisan weaving workshop and hired four women from my neighborhood.",
     author: "Luz Maria Quispe",
     role: "Entrepreneur",
     location: "Arequipa, Peru",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
   },
   animal: {
-    quote: "Our mobile rescue ambulance has sheltered over 800 street animals this year with full medical care and vaccinations.",
+    quote:
+      "Our mobile rescue ambulance has sheltered over 800 street animals this year with full medical care and vaccinations.",
     author: "Dr. Olena Koval",
     role: "Veterinary Officer",
     location: "Kyiv, Ukraine",
-    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80",
   },
   general: {
-    quote: "KindredPulse routes 92 cents of every dollar directly to high-priority field operations. Your contribution creates immediate impact.",
+    quote:
+      "KindredPulse routes 92 cents of every dollar directly to high-priority field operations. Your contribution creates immediate impact.",
     author: "Dr. Elena Vance",
     role: "Chairwoman & Field Logistics Chief",
     location: "Global Operations",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
   },
 };
 
@@ -89,7 +106,9 @@ function DonatePage() {
   const [customAmount, setCustomAmount] = useState<string>("");
   const [cause, setCause] = useState<string>(initialCause);
   const [step, setStep] = useState<number>(1);
-  const [paymentMethod, setPaymentMethod] = useState<"card" | "apple" | "google" | "crypto">("card");
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "apple" | "google" | "crypto">(
+    "card",
+  );
 
   // Form states
   const [fullName, setFullName] = useState("");
@@ -126,7 +145,6 @@ function DonatePage() {
       <main className="pt-24 pb-16 lg:pt-32 lg:pb-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start">
-
             {/* LEFT COLUMN: EMOTIONAL ANCHOR & TESTIMONIAL */}
             <div className="lg:col-span-5 space-y-8">
               <div>
@@ -137,7 +155,8 @@ function DonatePage() {
                   Fuel Change with Every Dollar
                 </h1>
                 <p className="mt-3 text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  92% of your gift goes directly to ground operations. Fully tax-deductible under IRS 501(c)(3) regulations.
+                  92% of your gift goes directly to ground operations. Fully tax-deductible under
+                  IRS 501(c)(3) regulations.
                 </p>
               </div>
 
@@ -151,9 +170,13 @@ function DonatePage() {
                     className="h-16 w-16 rounded-full object-cover border-2 border-primary/20"
                   />
                   <div>
-                    <h3 className="font-bold text-foreground text-base">{currentTestimonial.author}</h3>
+                    <h3 className="font-bold text-foreground text-base">
+                      {currentTestimonial.author}
+                    </h3>
                     <p className="text-xs text-primary font-medium">{currentTestimonial.role}</p>
-                    <p className="text-[11px] text-muted-foreground">{currentTestimonial.location}</p>
+                    <p className="text-[11px] text-muted-foreground">
+                      {currentTestimonial.location}
+                    </p>
                   </div>
                 </div>
 
@@ -179,29 +202,38 @@ function DonatePage() {
                     <div className="mt-1 text-muted-foreground">School Meals Provided</div>
                   </div>
                   <div className="rounded-2xl border border-border bg-background p-4 text-center">
-                    <div className="text-2xl font-bold text-primary-deep">{estimatedMedicalVisits}</div>
+                    <div className="text-2xl font-bold text-primary-deep">
+                      {estimatedMedicalVisits}
+                    </div>
                     <div className="mt-1 text-muted-foreground">Clinic Visits Funded</div>
                   </div>
                 </div>
 
                 <div className="mt-4 flex items-center justify-between border-t border-border pt-3 text-xs text-muted-foreground">
                   <span>Est. Tax Savings (24% Bracket):</span>
-                  <span className="font-bold text-emerald-600 dark:text-emerald-400 font-mono">${taxSavings}</span>
+                  <span className="font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+                    ${taxSavings}
+                  </span>
                 </div>
               </div>
 
               {/* Security & Trust Badges */}
               <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-primary" /> Charity Navigator 100%</span>
-                <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-4 w-4 text-primary" /> GuideStar Platinum</span>
-                <span className="inline-flex items-center gap-1.5"><Lock className="h-4 w-4 text-primary" /> 256-Bit SSL Encrypted</span>
+                <span className="inline-flex items-center gap-1.5">
+                  <ShieldCheck className="h-4 w-4 text-primary" /> Charity Navigator 100%
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <BadgeCheck className="h-4 w-4 text-primary" /> GuideStar Platinum
+                </span>
+                <span className="inline-flex items-center gap-1.5">
+                  <Lock className="h-4 w-4 text-primary" /> 256-Bit SSL Encrypted
+                </span>
               </div>
             </div>
 
             {/* RIGHT COLUMN: CHECKOUT FUNNEL CARD */}
             <div className="lg:col-span-7">
               <div className="overflow-hidden rounded-3xl border border-border bg-card p-6 sm:p-10 shadow-[var(--shadow-elegant)]">
-
                 {/* Step indicator */}
                 <div className="mb-8 flex items-center justify-between border-b border-border pb-4">
                   {[
@@ -218,9 +250,13 @@ function DonatePage() {
                           : "text-muted-foreground hover:text-foreground"
                       }`}
                     >
-                      <span className={`grid h-6 w-6 place-items-center rounded-full text-xs ${
-                        step === item.s ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                      }`}>
+                      <span
+                        className={`grid h-6 w-6 place-items-center rounded-full text-xs ${
+                          step === item.s
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted text-muted-foreground"
+                        }`}
+                      >
                         {item.s}
                       </span>
                       <span>{item.title}</span>
@@ -260,7 +296,10 @@ function DonatePage() {
                             <button
                               type="button"
                               key={a}
-                              onClick={() => { setSelectedAmount(a); setCustomAmount(""); }}
+                              onClick={() => {
+                                setSelectedAmount(a);
+                                setCustomAmount("");
+                              }}
                               className={`rounded-xl border py-3.5 text-sm sm:text-base font-bold transition-all ${
                                 selectedAmount === a && !customAmount
                                   ? "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-elegant)]"
@@ -308,7 +347,9 @@ function DonatePage() {
                           onChange={(e) => setCause(e.target.value)}
                           className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold text-foreground focus:border-primary focus:outline-none"
                         >
-                          <option value="general">General Fund (Where Most Needed — Recommended)</option>
+                          <option value="general">
+                            General Fund (Where Most Needed — Recommended)
+                          </option>
                           <option value="education">Education for Children</option>
                           <option value="food">Food Security & Agriculture</option>
                           <option value="medical">Medical Assistance & Surgeries</option>
@@ -321,11 +362,15 @@ function DonatePage() {
                       <div className="rounded-xl border border-border bg-muted/30 p-4 text-xs space-y-2">
                         <div className="flex justify-between text-muted-foreground">
                           <span>Giving Amount:</span>
-                          <span className="font-bold text-foreground font-mono">${effectiveAmount} ({cadence})</span>
+                          <span className="font-bold text-foreground font-mono">
+                            ${effectiveAmount} ({cadence})
+                          </span>
                         </div>
                         <div className="flex justify-between text-muted-foreground">
                           <span>Direct Field Deployment (92%):</span>
-                          <span className="font-bold text-emerald-600 dark:text-emerald-400 font-mono">${(effectiveAmount * 0.92).toFixed(2)}</span>
+                          <span className="font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+                            ${(effectiveAmount * 0.92).toFixed(2)}
+                          </span>
                         </div>
                         <div className="flex justify-between text-muted-foreground">
                           <span>Field Logistics (5%):</span>
@@ -371,7 +416,9 @@ function DonatePage() {
                           <button
                             type="button"
                             key={id}
-                            onClick={() => setPaymentMethod(id as any)}
+                            onClick={() =>
+                              setPaymentMethod(id as "card" | "apple" | "google" | "crypto")
+                            }
                             className={`flex flex-col items-center justify-center rounded-xl border p-2.5 text-xs font-semibold transition-all ${
                               paymentMethod === id
                                 ? "border-primary bg-primary/10 text-primary"
@@ -495,10 +542,8 @@ function DonatePage() {
                     </div>
                   )}
                 </form>
-
               </div>
             </div>
-
           </div>
         </div>
       </main>
@@ -514,7 +559,9 @@ function DonatePage() {
               Thank You for Your Generosity!
             </h3>
             <p className="mt-2 text-xs sm:text-sm text-muted-foreground">
-              Your gift of <strong className="text-foreground">${effectiveAmount}</strong> to <strong className="text-foreground uppercase">{cause}</strong> has been processed securely.
+              Your gift of <strong className="text-foreground">${effectiveAmount}</strong> to{" "}
+              <strong className="text-foreground uppercase">{cause}</strong> has been processed
+              securely.
             </p>
 
             <div className="mt-6 rounded-2xl border border-border bg-background p-4 text-xs text-left space-y-2">
@@ -524,11 +571,15 @@ function DonatePage() {
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Tax-Deductible Status:</span>
-                <span className="font-semibold text-emerald-600 dark:text-emerald-400">IRS 501(c)(3) Eligible</span>
+                <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                  IRS 501(c)(3) Eligible
+                </span>
               </div>
               <div className="flex justify-between text-muted-foreground">
                 <span>Confirmation Sent To:</span>
-                <span className="font-medium text-foreground">{email || "donor@kindredpulse.org"}</span>
+                <span className="font-medium text-foreground">
+                  {email || "donor@kindredpulse.org"}
+                </span>
               </div>
             </div>
 

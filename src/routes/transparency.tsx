@@ -24,9 +24,27 @@ export const Route = createFileRoute("/transparency")({
 });
 
 const SPENDING_BREAKDOWN = [
-  { category: "Direct Field Programs", pct: 92, amount: "$4,232,000", desc: "Grants, direct equipment, medical supplies, local farming equipment, and tuition fees delivered directly to beneficiaries.", color: "bg-primary" },
-  { category: "Logistics & Field Delivery", pct: 5, amount: "$230,000", desc: "Secure cold-chain transport, satellite communication, ground freight, and local field team security.", color: "bg-accent" },
-  { category: "Administration & Audit", pct: 3, amount: "$138,000", desc: "Independent CPA quarterly audits, legal compliance filings, and platform infrastructure.", color: "bg-muted-foreground/50" },
+  {
+    category: "Direct Field Programs",
+    pct: 92,
+    amount: "$4,232,000",
+    desc: "Grants, direct equipment, medical supplies, local farming equipment, and tuition fees delivered directly to beneficiaries.",
+    color: "bg-primary",
+  },
+  {
+    category: "Logistics & Field Delivery",
+    pct: 5,
+    amount: "$230,000",
+    desc: "Secure cold-chain transport, satellite communication, ground freight, and local field team security.",
+    color: "bg-accent",
+  },
+  {
+    category: "Administration & Audit",
+    pct: 3,
+    amount: "$138,000",
+    desc: "Independent CPA quarterly audits, legal compliance filings, and platform infrastructure.",
+    color: "bg-muted-foreground/50",
+  },
 ];
 
 const PILLAR_ALLOCATIONS = [
@@ -39,17 +57,65 @@ const PILLAR_ALLOCATIONS = [
 ];
 
 const AUDIT_REPORTS = [
-  { title: "Q1 2026 Comprehensive Financial Audit", date: "April 15, 2026", auditor: "KPMG Independent Assurance", type: "Quarterly Audit", size: "2.4 MB" },
-  { title: "2025 Annual IRS Form 990 Public Disclosure", date: "March 01, 2026", auditor: "Internal Revenue Service", type: "IRS Filing", size: "4.1 MB" },
-  { title: "Q4 2025 Field Delivery Verification Log", date: "January 20, 2026", auditor: "Global Impact Watchdog", type: "Field Audit", size: "1.8 MB" },
-  { title: "2025 501(c)(3) Tax Exempt Determination Letter", date: "January 10, 2026", auditor: "US Department of the Treasury", type: "Tax Exemption", size: "850 KB" },
-  { title: "Q3 2025 Logistics & Supply Chain Reconciliation", date: "October 18, 2025", auditor: "Deloitte External Assurance", type: "Supply Chain", size: "3.2 MB" },
+  {
+    title: "Q1 2026 Comprehensive Financial Audit",
+    date: "April 15, 2026",
+    auditor: "KPMG Independent Assurance",
+    type: "Quarterly Audit",
+    size: "2.4 MB",
+  },
+  {
+    title: "2025 Annual IRS Form 990 Public Disclosure",
+    date: "March 01, 2026",
+    auditor: "Internal Revenue Service",
+    type: "IRS Filing",
+    size: "4.1 MB",
+  },
+  {
+    title: "Q4 2025 Field Delivery Verification Log",
+    date: "January 20, 2026",
+    auditor: "Global Impact Watchdog",
+    type: "Field Audit",
+    size: "1.8 MB",
+  },
+  {
+    title: "2025 501(c)(3) Tax Exempt Determination Letter",
+    date: "January 10, 2026",
+    auditor: "US Department of the Treasury",
+    type: "Tax Exemption",
+    size: "850 KB",
+  },
+  {
+    title: "Q3 2025 Logistics & Supply Chain Reconciliation",
+    date: "October 18, 2025",
+    auditor: "Deloitte External Assurance",
+    type: "Supply Chain",
+    size: "3.2 MB",
+  },
 ];
 
 const BOARD_DIRECTORS = [
-  { name: "Dr. Elena Vance", title: "Chairwoman & Co-Founder", bio: "Former UNICEF Global Logistics Chief with 18+ years running humanitarian supply chains across East Africa.", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" },
-  { name: "Marcus Thorne, CPA", title: "Treasurer & Head of Audit", bio: "Senior Partner at Foresight Financial, specializing in non-profit transparency and fiscal compliance.", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" },
-  { name: "Aisha Patel", title: "Director of Impact Verification", bio: "Pioneered satellite remote sensing for relief distribution tracking in South Asia.", image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" },
+  {
+    name: "Dr. Elena Vance",
+    title: "Chairwoman & Co-Founder",
+    bio: "Former UNICEF Global Logistics Chief with 18+ years running humanitarian supply chains across East Africa.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Marcus Thorne, CPA",
+    title: "Treasurer & Head of Audit",
+    bio: "Senior Partner at Foresight Financial, specializing in non-profit transparency and fiscal compliance.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    name: "Aisha Patel",
+    title: "Director of Impact Verification",
+    bio: "Pioneered satellite remote sensing for relief distribution tracking in South Asia.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80",
+  },
 ];
 
 function TransparencyPage() {
@@ -57,9 +123,10 @@ function TransparencyPage() {
   const [selectedPillar, setSelectedPillar] = useState<string | null>(null);
   const [previewDoc, setPreviewDoc] = useState<string | null>(null);
 
-  const filteredReports = AUDIT_REPORTS.filter((r) =>
-    r.title.toLowerCase().includes(search.toLowerCase()) ||
-    r.type.toLowerCase().includes(search.toLowerCase())
+  const filteredReports = AUDIT_REPORTS.filter(
+    (r) =>
+      r.title.toLowerCase().includes(search.toLowerCase()) ||
+      r.type.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -74,17 +141,28 @@ function TransparencyPage() {
             <Lock className="h-3.5 w-3.5" /> Open Financial Ledger & Public Audit
           </span>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Radical Transparency.<br />
-            <span className="bg-[var(--gradient-hero)] bg-clip-text text-transparent">Zero Guesswork.</span>
+            Radical Transparency.
+            <br />
+            <span className="bg-[var(--gradient-hero)] bg-clip-text text-transparent">
+              Zero Guesswork.
+            </span>
           </h1>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-            We believe donors deserve line-item clarity. Every donation is tracked from bank settlement to field execution with quarterly public audits and zero hidden administrative overhead.
+            We believe donors deserve line-item clarity. Every donation is tracked from bank
+            settlement to field execution with quarterly public audits and zero hidden
+            administrative overhead.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground sm:text-sm">
-            <span className="inline-flex items-center gap-1.5 font-medium"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> 92% Direct Field Deployment</span>
-            <span className="inline-flex items-center gap-1.5 font-medium"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> Quarterly CPA Audited</span>
-            <span className="inline-flex items-center gap-1.5 font-medium"><CheckCircle2 className="h-4 w-4 text-emerald-500" /> Public IRS 501(c)(3) Filings</span>
+            <span className="inline-flex items-center gap-1.5 font-medium">
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> 92% Direct Field Deployment
+            </span>
+            <span className="inline-flex items-center gap-1.5 font-medium">
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Quarterly CPA Audited
+            </span>
+            <span className="inline-flex items-center gap-1.5 font-medium">
+              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Public IRS 501(c)(3) Filings
+            </span>
           </div>
         </div>
       </section>
@@ -93,7 +171,9 @@ function TransparencyPage() {
       <section className="border-t border-border bg-card/40 py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Live Financial Breakdown</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Live Financial Breakdown
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
               Where Every Dollar Goes
             </h2>
@@ -106,17 +186,25 @@ function TransparencyPage() {
             {/* Direct split cards */}
             <div className="space-y-4">
               {SPENDING_BREAKDOWN.map((item) => (
-                <div key={item.category} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <div
+                  key={item.category}
+                  className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+                >
                   <div className="flex items-baseline justify-between">
                     <span className="text-base font-semibold text-foreground">{item.category}</span>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl font-bold text-primary-deep">{item.pct}%</span>
-                      <span className="text-xs text-muted-foreground font-mono">({item.amount})</span>
+                      <span className="text-xs text-muted-foreground font-mono">
+                        ({item.amount})
+                      </span>
                     </div>
                   </div>
                   <p className="mt-2 text-xs sm:text-sm text-muted-foreground">{item.desc}</p>
                   <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-muted">
-                    <div className={`h-full rounded-full ${item.color}`} style={{ width: `${item.pct}%` }} />
+                    <div
+                      className={`h-full rounded-full ${item.color}`}
+                      style={{ width: `${item.pct}%` }}
+                    />
                   </div>
                 </div>
               ))}
@@ -127,7 +215,9 @@ function TransparencyPage() {
               <div className="flex items-center justify-between border-b border-border pb-4">
                 <div>
                   <h3 className="text-lg font-bold text-foreground">Field Allocation by Cause</h3>
-                  <p className="text-xs text-muted-foreground">Click a pillar to view project distribution</p>
+                  <p className="text-xs text-muted-foreground">
+                    Click a pillar to view project distribution
+                  </p>
                 </div>
                 <PieChartIcon className="h-5 w-5 text-primary" />
               </div>
@@ -147,15 +237,25 @@ function TransparencyPage() {
                     >
                       <div className="flex items-center justify-between text-xs sm:text-sm font-semibold">
                         <span className="text-foreground">{p.name}</span>
-                        <span className="text-primary font-mono">${(p.cents / 100).toLocaleString()} ({p.pct}%)</span>
+                        <span className="text-primary font-mono">
+                          ${(p.cents / 100).toLocaleString()} ({p.pct}%)
+                        </span>
                       </div>
                       <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
-                        <div className="h-full bg-[var(--gradient-hero)] rounded-full" style={{ width: `${p.pct * 3.5}%` }} />
+                        <div
+                          className="h-full bg-[var(--gradient-hero)] rounded-full"
+                          style={{ width: `${p.pct * 3.5}%` }}
+                        />
                       </div>
                       {isSelected && (
                         <div className="mt-3 text-xs text-muted-foreground border-t border-border/60 pt-2 flex justify-between items-center">
-                          <span>Active Ground Projects: <strong className="text-foreground">{p.projects}</strong></span>
-                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">100% Verified Logs</span>
+                          <span>
+                            Active Ground Projects:{" "}
+                            <strong className="text-foreground">{p.projects}</strong>
+                          </span>
+                          <span className="text-emerald-600 dark:text-emerald-400 font-medium">
+                            100% Verified Logs
+                          </span>
                         </div>
                       )}
                     </button>
@@ -172,7 +272,9 @@ function TransparencyPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Official Vault</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Official Vault
+              </div>
               <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
                 Public Audit & Filing Registry
               </h2>
@@ -196,17 +298,26 @@ function TransparencyPage() {
           <div className="mt-8 overflow-hidden rounded-2xl border border-border bg-card shadow-[var(--shadow-card)]">
             <div className="divide-y divide-border">
               {filteredReports.map((report) => (
-                <div key={report.title} className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between hover:bg-muted/40 transition-colors">
+                <div
+                  key={report.title}
+                  className="flex flex-col gap-4 p-5 sm:flex-row sm:items-center sm:justify-between hover:bg-muted/40 transition-colors"
+                >
                   <div className="flex items-start gap-3.5">
                     <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary-deep">
                       <FileText className="h-5 w-5" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground text-sm sm:text-base">{report.title}</h4>
+                      <h4 className="font-semibold text-foreground text-sm sm:text-base">
+                        {report.title}
+                      </h4>
                       <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted-foreground">
                         <span>Filed: {report.date}</span>
-                        <span>Auditor: <strong className="text-foreground">{report.auditor}</strong></span>
-                        <span className="rounded bg-muted px-2 py-0.5 font-medium">{report.type}</span>
+                        <span>
+                          Auditor: <strong className="text-foreground">{report.auditor}</strong>
+                        </span>
+                        <span className="rounded bg-muted px-2 py-0.5 font-medium">
+                          {report.type}
+                        </span>
                         <span>{report.size}</span>
                       </div>
                     </div>
@@ -243,7 +354,9 @@ function TransparencyPage() {
       <section className="border-t border-border bg-card/40 py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
-            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Governance & Legal</div>
+            <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+              Governance & Legal
+            </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
               Verified Legal Standing & Leadership
             </h2>
@@ -259,12 +372,17 @@ function TransparencyPage() {
             ].map((b) => {
               const Icon = b.icon;
               return (
-                <div key={b.badge} className="rounded-2xl border border-border bg-card p-5 text-center shadow-[var(--shadow-card)]">
+                <div
+                  key={b.badge}
+                  className="rounded-2xl border border-border bg-card p-5 text-center shadow-[var(--shadow-card)]"
+                >
                   <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-primary-soft text-primary-deep">
                     <Icon className="h-6 w-6" />
                   </div>
                   <div className="mt-3 text-sm font-bold text-foreground">{b.badge}</div>
-                  <div className="mt-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">{b.status}</div>
+                  <div className="mt-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
+                    {b.status}
+                  </div>
                 </div>
               );
             })}
@@ -278,7 +396,10 @@ function TransparencyPage() {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {BOARD_DIRECTORS.map((member) => (
-                <div key={member.name} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]">
+                <div
+                  key={member.name}
+                  className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)]"
+                >
                   <img
                     src={member.image}
                     alt={member.name}
@@ -299,9 +420,12 @@ function TransparencyPage() {
                 <AlertTriangle className="h-6 w-6" />
               </div>
               <div>
-                <h4 className="text-base font-bold text-foreground">Independent Whistleblower & Ethics Hotline</h4>
+                <h4 className="text-base font-bold text-foreground">
+                  Independent Whistleblower & Ethics Hotline
+                </h4>
                 <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl">
-                  We operate a zero-tolerance policy against financial misuse. Reports are handled anonymously by an external legal ombudsman.
+                  We operate a zero-tolerance policy against financial misuse. Reports are handled
+                  anonymously by an external legal ombudsman.
                 </p>
               </div>
             </div>
@@ -314,7 +438,6 @@ function TransparencyPage() {
               <ExternalLink className="h-3.5 w-3.5" />
             </button>
           </div>
-
         </div>
       </section>
 
@@ -340,7 +463,8 @@ function TransparencyPage() {
                 </code>
               </div>
               <p>
-                This document is certified by our external independent accounting partner. All financial figures are reconciled directly with bank settlement accounts.
+                This document is certified by our external independent accounting partner. All
+                financial figures are reconciled directly with bank settlement accounts.
               </p>
             </div>
             <div className="mt-6 flex justify-end gap-3">
@@ -351,7 +475,10 @@ function TransparencyPage() {
                 Close Preview
               </button>
               <button
-                onClick={() => { alert(`Downloading ${previewDoc}`); setPreviewDoc(null); }}
+                onClick={() => {
+                  alert(`Downloading ${previewDoc}`);
+                  setPreviewDoc(null);
+                }}
                 className="rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
               >
                 Download PDF

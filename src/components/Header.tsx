@@ -18,7 +18,9 @@ export function Header() {
           <span className="grid h-8 w-8 place-items-center rounded-full bg-[var(--gradient-hero)] text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
             <Activity className="h-4 w-4" strokeWidth={2.5} />
           </span>
-          <span className="text-base font-semibold tracking-tight text-foreground">KindredPulse</span>
+          <span className="text-base font-semibold tracking-tight text-foreground">
+            KindredPulse
+          </span>
         </Link>
 
         <div className="hidden items-center gap-2 md:flex">

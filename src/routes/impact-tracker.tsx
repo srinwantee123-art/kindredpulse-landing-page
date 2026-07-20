@@ -45,10 +45,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 58, y: 55 },
     timestamp: "12 mins ago",
     title: "Solar Irrigation Pumps Installed Across 8 Farming Co-ops",
-    updateText: "300 solar-powered water filtration & irrigation units deployed across 12 drought-affected villages, providing sustainable crop water for 4,200 local farmers.",
+    updateText:
+      "300 solar-powered water filtration & irrigation units deployed across 12 drought-affected villages, providing sustainable crop water for 4,200 local farmers.",
     kpiHighlight: "4,200 Farmers Supported",
     receiptHash: "0x94f8a12e8b94103c84f1a239b819",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
     verifier: "Global Farm Watchdog · Field Cert #894",
   },
   {
@@ -59,10 +61,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 74, y: 44 },
     timestamp: "45 mins ago",
     title: "120 Solar Tablets & E-Library Delivered to Primary School",
-    updateText: "Delivered 120 satellite-enabled digital tablets equipped with offline STEM curricula, granting 450 remote students access to interactive learning tools.",
+    updateText:
+      "Delivered 120 satellite-enabled digital tablets equipped with offline STEM curricula, granting 450 remote students access to interactive learning tools.",
     kpiHighlight: "450 Students Enrolled",
     receiptHash: "0x73c1d92a0149e8310ba749f1092e",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80",
     verifier: "EduAsia Verified · Receipt #441",
   },
   {
@@ -73,10 +77,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 26, y: 48 },
     timestamp: "2 hours ago",
     title: "Mobile Emergency Clinic Completed 42 Pediatric Surgeries",
-    updateText: "Mobile medical unit deployed to rural highland communities. 42 cleft lip and orthopedic surgeries completed under 100% sponsored care.",
+    updateText:
+      "Mobile medical unit deployed to rural highland communities. 42 cleft lip and orthopedic surgeries completed under 100% sponsored care.",
     kpiHighlight: "42 Surgeries Completed",
     receiptHash: "0x19f4b55e892c10a374b9201f3e1a",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     verifier: "Surgical Aid Alliance · Audit #102",
   },
   {
@@ -87,10 +93,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 84, y: 52 },
     timestamp: "3 hours ago",
     title: "Emergency Water Filtration Stations Operational Post-Storm",
-    updateText: "5 high-capacity emergency water purification units deployed following typhoon damage, outputting 15,000 liters of clean drinking water daily.",
+    updateText:
+      "5 high-capacity emergency water purification units deployed following typhoon damage, outputting 15,000 liters of clean drinking water daily.",
     kpiHighlight: "15,000L Water / Day",
     receiptHash: "0x44a10f92b7194c0291e389104b2a",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80",
     verifier: "Pacific Rapid Response · Log #663",
   },
   {
@@ -101,10 +109,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 32, y: 68 },
     timestamp: "5 hours ago",
     title: "35 Women Micro-Entrepreneurs Receive Zero-Interest Grants",
-    updateText: "Issued seed funding and digital bookkeeping tools to 35 women artisan weavers to scale local textile exports to regional markets.",
+    updateText:
+      "Issued seed funding and digital bookkeeping tools to 35 women artisan weavers to scale local textile exports to regional markets.",
     kpiHighlight: "35 Grants Distributed",
     receiptHash: "0x82b99f1402e1c983a7102b4892c1",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
     verifier: "Andean Equity Fund · Batch #91",
   },
   {
@@ -115,10 +125,12 @@ const FIELD_UPDATES: FieldUpdate[] = [
     coordinates: { x: 56, y: 28 },
     timestamp: "7 hours ago",
     title: "Rescue Ambulance Deployed for Street Animals & Sanctuary Care",
-    updateText: "Vaccinated and sheltered 85 animals rescued from displaced rural zones. Distributed 2.5 tons of specialized pet nutrition.",
+    updateText:
+      "Vaccinated and sheltered 85 animals rescued from displaced rural zones. Distributed 2.5 tons of specialized pet nutrition.",
     kpiHighlight: "85 Rescues Secured",
     receiptHash: "0x51c390291f84b1029e8401a938b2",
-    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=800&q=80",
     verifier: "EuroRescue Direct · Cert #204",
   },
 ];
@@ -137,10 +149,18 @@ function ImpactTrackerPage() {
     return () => clearInterval(interval);
   }, []);
 
-  const categories = ["All", "Education", "Food Security", "Medical Assistance", "Disaster Relief", "Women Empowerment", "Animal Welfare"];
+  const categories = [
+    "All",
+    "Education",
+    "Food Security",
+    "Medical Assistance",
+    "Disaster Relief",
+    "Women Empowerment",
+    "Animal Welfare",
+  ];
 
   const filteredUpdates = FIELD_UPDATES.filter(
-    (u) => activeFilter === "All" || u.pillar.toLowerCase() === activeFilter.toLowerCase()
+    (u) => activeFilter === "All" || u.pillar.toLowerCase() === activeFilter.toLowerCase(),
   );
 
   return (
@@ -183,7 +203,9 @@ function ImpactTrackerPage() {
               <h2 className="text-2xl font-bold tracking-tight text-foreground flex items-center gap-2">
                 <Globe className="h-5 w-5 text-primary" /> Active Distribution Hotspots
               </h2>
-              <p className="text-xs text-muted-foreground">Click pins to inspect verified field operational logs</p>
+              <p className="text-xs text-muted-foreground">
+                Click pins to inspect verified field operational logs
+              </p>
             </div>
 
             {/* Filter chips */}
@@ -210,7 +232,9 @@ function ImpactTrackerPage() {
             <svg className="h-full w-full opacity-30" viewBox="0 0 1000 500" fill="none">
               <path
                 d="M150 150 Q 200 100, 300 130 T 400 200 M 500 180 Q 600 140, 700 190 T 850 160 M 200 300 Q 250 350, 350 330 M 550 320 Q 650 380, 750 340 M 800 280 Q 850 320, 900 290"
-                stroke="oklch(0.78 0.16 75)" strokeWidth="1.5" strokeDasharray="4 4"
+                stroke="oklch(0.78 0.16 75)"
+                strokeWidth="1.5"
+                strokeDasharray="4 4"
               />
               <circle cx="200" cy="180" r="80" fill="oklch(0.42 0.09 195 / 0.15)" />
               <circle cx="580" cy="260" r="100" fill="oklch(0.42 0.09 195 / 0.15)" />
@@ -246,13 +270,22 @@ function ImpactTrackerPage() {
                   <span className="rounded-md bg-accent px-2 py-0.5 text-[10px] font-bold text-accent-foreground uppercase tracking-wider">
                     {activePin.pillar}
                   </span>
-                  <button onClick={() => setActivePin(null)} className="text-xs text-white/70 hover:text-white">✕</button>
+                  <button
+                    onClick={() => setActivePin(null)}
+                    className="text-xs text-white/70 hover:text-white"
+                  >
+                    ✕
+                  </button>
                 </div>
-                <h4 className="mt-2 text-sm font-bold text-white leading-tight">{activePin.title}</h4>
+                <h4 className="mt-2 text-sm font-bold text-white leading-tight">
+                  {activePin.title}
+                </h4>
                 <div className="mt-1 text-xs text-white/70 flex items-center gap-1">
                   <MapPin className="h-3 w-3 text-accent" /> {activePin.region}, {activePin.country}
                 </div>
-                <p className="mt-2 text-[11px] text-white/80 line-clamp-2">{activePin.updateText}</p>
+                <p className="mt-2 text-[11px] text-white/80 line-clamp-2">
+                  {activePin.updateText}
+                </p>
                 <div className="mt-3 flex items-center justify-between border-t border-white/15 pt-2 text-[11px]">
                   <span className="font-semibold text-accent">{activePin.kpiHighlight}</span>
                   <button
@@ -266,7 +299,8 @@ function ImpactTrackerPage() {
             )}
 
             <div className="absolute top-4 right-4 rounded-full bg-black/60 px-3 py-1 text-[11px] text-white/80 backdrop-blur-md flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> 6 Field Networks Live
+              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> 6 Field
+              Networks Live
             </div>
           </div>
         </div>
@@ -277,13 +311,16 @@ function ImpactTrackerPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between mb-8">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Verified Stream</div>
+              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
+                Verified Stream
+              </div>
               <h2 className="mt-1 text-3xl font-bold tracking-tight sm:text-4xl">
                 Field Deployment Feed
               </h2>
             </div>
             <div className="text-xs text-muted-foreground flex items-center gap-2">
-              <Clock className="h-3.5 w-3.5 text-primary" /> Auto-synced with regional logistics logs
+              <Clock className="h-3.5 w-3.5 text-primary" /> Auto-synced with regional logistics
+              logs
             </div>
           </div>
 
@@ -313,7 +350,8 @@ function ImpactTrackerPage() {
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
                     <span className="flex items-center gap-1 font-medium text-foreground">
-                      <MapPin className="h-3.5 w-3.5 text-primary" /> {update.region}, {update.country}
+                      <MapPin className="h-3.5 w-3.5 text-primary" /> {update.region},{" "}
+                      {update.country}
                     </span>
                     <span className="flex items-center gap-1 font-mono text-[11px]">
                       <Clock className="h-3 w-3" /> {update.timestamp}
@@ -354,7 +392,9 @@ function ImpactTrackerPage() {
             <div className="flex items-center justify-between border-b border-border pb-4">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-                <h3 className="font-bold text-foreground text-base sm:text-lg">Verified Field Receipt</h3>
+                <h3 className="font-bold text-foreground text-base sm:text-lg">
+                  Verified Field Receipt
+                </h3>
               </div>
               <button
                 onClick={() => setSelectedReceipt(null)}
@@ -370,14 +410,20 @@ function ImpactTrackerPage() {
                   <span>Receipt ID</span>
                   <span className="font-mono">{selectedReceipt.id}</span>
                 </div>
-                <div className="mt-2 text-base font-bold text-foreground">{selectedReceipt.title}</div>
-                <div className="mt-1 text-xs text-primary font-semibold">{selectedReceipt.kpiHighlight}</div>
+                <div className="mt-2 text-base font-bold text-foreground">
+                  {selectedReceipt.title}
+                </div>
+                <div className="mt-1 text-xs text-primary font-semibold">
+                  {selectedReceipt.kpiHighlight}
+                </div>
               </div>
 
               <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="rounded-lg border border-border bg-muted/40 p-3">
                   <span className="text-muted-foreground block text-[10px]">Location</span>
-                  <span className="font-semibold text-foreground">{selectedReceipt.region}, {selectedReceipt.country}</span>
+                  <span className="font-semibold text-foreground">
+                    {selectedReceipt.region}, {selectedReceipt.country}
+                  </span>
                 </div>
                 <div className="rounded-lg border border-border bg-muted/40 p-3">
                   <span className="text-muted-foreground block text-[10px]">Auditor Sign-Off</span>
@@ -386,7 +432,9 @@ function ImpactTrackerPage() {
               </div>
 
               <div className="rounded-xl border border-border bg-background p-3 font-mono text-[11px]">
-                <span className="text-muted-foreground block text-[10px] uppercase font-sans mb-1">Immutable Receipt Hash</span>
+                <span className="text-muted-foreground block text-[10px] uppercase font-sans mb-1">
+                  Immutable Receipt Hash
+                </span>
                 <span className="text-primary break-all">{selectedReceipt.receiptHash}</span>
               </div>
             </div>
@@ -399,7 +447,9 @@ function ImpactTrackerPage() {
                 Close
               </button>
               <button
-                onClick={() => alert(`Receipt hash ${selectedReceipt.receiptHash} verified on public ledger.`)}
+                onClick={() =>
+                  alert(`Receipt hash ${selectedReceipt.receiptHash} verified on public ledger.`)
+                }
                 className="rounded-xl bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90"
               >
                 Verify on Public Ledger

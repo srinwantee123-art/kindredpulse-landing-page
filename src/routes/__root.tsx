@@ -78,10 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "KindredPulse — Transform Intent into Impact" },
-      { name: "description", content: "KindredPulse is a modern charity platform channeling 92% of every donation directly into education, food security, medical aid, disaster relief, women empowerment, and animal welfare." },
+      {
+        name: "description",
+        content:
+          "KindredPulse is a modern charity platform channeling 92% of every donation directly into education, food security, medical aid, disaster relief, women empowerment, and animal welfare.",
+      },
       { name: "author", content: "KindredPulse" },
       { property: "og:title", content: "KindredPulse — Transform Intent into Impact" },
-      { property: "og:description", content: "Transparent, high-impact giving across six global causes. Track every dollar in real time." },
+      {
+        property: "og:description",
+        content:
+          "Transparent, high-impact giving across six global causes. Track every dollar in real time.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@KindredPulse" },

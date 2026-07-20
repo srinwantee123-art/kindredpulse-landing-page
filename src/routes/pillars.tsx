@@ -25,13 +25,16 @@ const PILLARS_DETAIL = [
     name: "Education for Children",
     icon: BookOpen,
     kpiBadge: "Active Projects: 42 Schools & Labs",
-    problem: "Over 250 million children worldwide lack access to basic primary education, digital literacy, and adequate learning materials, perpetuating intergenerational poverty cycles in rural and conflict-affected zones.",
-    solution: "We build community-owned digital learning hubs, fund local teachers' salaries, and provide full multi-year academic scholarships with nutritional and transportation support included.",
+    problem:
+      "Over 250 million children worldwide lack access to basic primary education, digital literacy, and adequate learning materials, perpetuating intergenerational poverty cycles in rural and conflict-affected zones.",
+    solution:
+      "We build community-owned digital learning hubs, fund local teachers' salaries, and provide full multi-year academic scholarships with nutritional and transportation support included.",
     targetRegion: "Sub-Saharan Africa & South Asia",
     beneficiaries: "64,200+ Children",
     fundLabel: "Fund Education",
     causeKey: "education",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
     tags: ["STEM Labs", "Scholarships", "Teacher Training"],
   },
   {
@@ -39,13 +42,16 @@ const PILLARS_DETAIL = [
     name: "Food Security",
     icon: UtensilsCrossed,
     kpiBadge: "Meals Delivered: 1,840,000+",
-    problem: "Acute malnutrition affects vulnerable farming communities where climate shocks disrupt local crop yields and inflate food prices beyond survival limits.",
-    solution: "Rather than imported food packs, we invest directly in indigenous agricultural technology, solar irrigation systems, and local farmer cooperatives to secure long-term food sovereignty.",
+    problem:
+      "Acute malnutrition affects vulnerable farming communities where climate shocks disrupt local crop yields and inflate food prices beyond survival limits.",
+    solution:
+      "Rather than imported food packs, we invest directly in indigenous agricultural technology, solar irrigation systems, and local farmer cooperatives to secure long-term food sovereignty.",
     targetRegion: "Horn of Africa & Central America",
     beneficiaries: "98,000+ Families",
     fundLabel: "Fund Food Security",
     causeKey: "food",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
     tags: ["Solar Irrigation", "Local Sourcing", "Nutrition Support"],
   },
   {
@@ -53,13 +59,16 @@ const PILLARS_DETAIL = [
     name: "Medical Assistance",
     icon: HeartPulse,
     kpiBadge: "Surgeries & Treatments: 14,350+",
-    problem: "Preventable illnesses and emergency surgical needs go untreated in remote districts due to missing cold-chain transport, medicine shortages, and a lack of qualified care providers.",
-    solution: "We deploy mobile surgical units equipped with satellite connectivity, supply life-saving pharmaceuticals directly to rural clinics, and sponsor pediatric emergency surgeries.",
+    problem:
+      "Preventable illnesses and emergency surgical needs go untreated in remote districts due to missing cold-chain transport, medicine shortages, and a lack of qualified care providers.",
+    solution:
+      "We deploy mobile surgical units equipped with satellite connectivity, supply life-saving pharmaceuticals directly to rural clinics, and sponsor pediatric emergency surgeries.",
     targetRegion: "Southeast Asia & Sub-Saharan Africa",
     beneficiaries: "112,000+ Patients",
     fundLabel: "Fund Medical Care",
     causeKey: "medical",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
     tags: ["Mobile Clinics", "Pediatric Surgery", "Cold-Chain Supply"],
   },
   {
@@ -67,13 +76,16 @@ const PILLARS_DETAIL = [
     name: "Disaster Relief",
     icon: LifeBuoy,
     kpiBadge: "Response Time: < 72 Hours",
-    problem: "Sudden natural catastrophes and climate disasters leave displaced populations immediately stripped of clean drinking water, temporary shelter, and emergency sanitation.",
-    solution: "We maintain pre-positioned emergency stocks and rapid-response logistics teams who deploy within 72 hours, setting up clean water filtration stations and medical triage camps.",
+    problem:
+      "Sudden natural catastrophes and climate disasters leave displaced populations immediately stripped of clean drinking water, temporary shelter, and emergency sanitation.",
+    solution:
+      "We maintain pre-positioned emergency stocks and rapid-response logistics teams who deploy within 72 hours, setting up clean water filtration stations and medical triage camps.",
     targetRegion: "Pacific Islands & Global Disaster Zones",
     beneficiaries: "185,000+ Displaced Persons",
     fundLabel: "Fund Emergency Relief",
     causeKey: "disaster",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
     tags: ["72h Rapid Response", "Water Purification", "Emergency Shelter"],
   },
   {
@@ -81,13 +93,16 @@ const PILLARS_DETAIL = [
     name: "Women Empowerment",
     icon: Sparkles,
     kpiBadge: "Micro-Grants Issued: 3,120+",
-    problem: "Structural economic barriers leave women in developing economies without access to capital, formal financial services, or independent vocational training opportunities.",
-    solution: "We provide zero-interest micro-equity grants, digital financial literacy training, and community leadership mentorship that multiplies income across entire households.",
+    problem:
+      "Structural economic barriers leave women in developing economies without access to capital, formal financial services, or independent vocational training opportunities.",
+    solution:
+      "We provide zero-interest micro-equity grants, digital financial literacy training, and community leadership mentorship that multiplies income across entire households.",
     targetRegion: "South Asia & Latin America",
     beneficiaries: "24,500+ Entrepreneurs",
     fundLabel: "Fund Women Grants",
     causeKey: "women",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
     tags: ["Zero-Interest Microgrants", "Business Mentorship", "Literacy Labs"],
   },
   {
@@ -95,13 +110,16 @@ const PILLARS_DETAIL = [
     name: "Animal Welfare",
     icon: PawPrint,
     kpiBadge: "Rescues & Sheltered: 8,900+",
-    problem: "Rapid urbanization and habitat encroachment leave millions of street animals injured, unvaccinated, and suffering without sanctuary or veterinary interventions.",
-    solution: "We fund mobile veterinary ambulances, street animal vaccination drives, and partner sanctuaries dedicated to animal rehabilitation and wildlife protection.",
+    problem:
+      "Rapid urbanization and habitat encroachment leave millions of street animals injured, unvaccinated, and suffering without sanctuary or veterinary interventions.",
+    solution:
+      "We fund mobile veterinary ambulances, street animal vaccination drives, and partner sanctuaries dedicated to animal rehabilitation and wildlife protection.",
     targetRegion: "Eastern Europe & South America",
     beneficiaries: "8,900+ Rescued Animals",
     fundLabel: "Fund Animal Welfare",
     causeKey: "animal",
-    image: "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1200&q=80",
+    image:
+      "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=1200&q=80",
     tags: ["Mobile Rescue Units", "Sanctuary Grants", "Vaccination Drives"],
   },
 ];
@@ -122,7 +140,9 @@ function PillarsPage() {
             Our Pillars of Change
           </h1>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
-            We don't deploy arbitrary aid. Every dollar in our six core pillars is governed by field-verified outcomes, localized leadership, and 92% direct allocation to ground teams.
+            We don't deploy arbitrary aid. Every dollar in our six core pillars is governed by
+            field-verified outcomes, localized leadership, and 92% direct allocation to ground
+            teams.
           </p>
 
           {/* Quick Pillar Jump Chips */}
@@ -158,8 +178,9 @@ function PillarsPage() {
                   id={pillar.id}
                   className="scroll-mt-32 rounded-3xl border border-border/80 bg-card p-6 shadow-[var(--shadow-card)] transition-all duration-300 sm:p-8 lg:p-12"
                 >
-                  <div className={`grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-14 ${isEven ? "" : "lg:grid-flow-dense"}`}>
-                    
+                  <div
+                    className={`grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-14 ${isEven ? "" : "lg:grid-flow-dense"}`}
+                  >
                     {/* Visual Media Column */}
                     <div className={isEven ? "lg:col-start-1" : "lg:col-start-2"}>
                       <div className="relative overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-elegant)] group">
@@ -174,7 +195,10 @@ function PillarsPage() {
                         <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent p-6 pt-16">
                           <div className="flex flex-wrap items-center gap-2">
                             {pillar.tags.map((tag) => (
-                              <span key={tag} className="rounded-md bg-white/15 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm">
+                              <span
+                                key={tag}
+                                className="rounded-md bg-white/15 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur-sm"
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -190,7 +214,9 @@ function PillarsPage() {
                           <Icon className="h-6 w-6" strokeWidth={2} />
                         </span>
                         <div>
-                          <span className="text-xs font-bold uppercase tracking-widest text-primary">Pillar 0{idx + 1}</span>
+                          <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                            Pillar 0{idx + 1}
+                          </span>
                           <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl lg:text-4xl">
                             {pillar.name}
                           </h2>
@@ -220,13 +246,18 @@ function PillarsPage() {
                           <div className="text-xs text-muted-foreground flex items-center gap-1">
                             <Globe className="h-3.5 w-3.5 text-primary" /> Target Region
                           </div>
-                          <div className="font-semibold text-foreground mt-0.5">{pillar.targetRegion}</div>
+                          <div className="font-semibold text-foreground mt-0.5">
+                            {pillar.targetRegion}
+                          </div>
                         </div>
                         <div>
                           <div className="text-xs text-muted-foreground flex items-center gap-1">
-                            <TrendingUp className="h-3.5 w-3.5 text-primary" /> Verified Beneficiaries
+                            <TrendingUp className="h-3.5 w-3.5 text-primary" /> Verified
+                            Beneficiaries
                           </div>
-                          <div className="font-semibold text-foreground mt-0.5">{pillar.beneficiaries}</div>
+                          <div className="font-semibold text-foreground mt-0.5">
+                            {pillar.beneficiaries}
+                          </div>
                         </div>
                       </div>
 
@@ -241,12 +272,11 @@ function PillarsPage() {
                           <ArrowRight className="h-4 w-4" />
                         </Link>
                         <span className="text-xs text-muted-foreground flex items-center gap-1">
-                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> 92% Direct Field Deployment
+                          <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" /> 92% Direct Field
+                          Deployment
                         </span>
                       </div>
-
                     </div>
-
                   </div>
                 </div>
               );
