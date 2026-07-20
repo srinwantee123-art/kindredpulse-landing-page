@@ -133,10 +133,176 @@ function TransparencyPage() {
     <div className="min-h-screen bg-background text-foreground antialiased selection:bg-accent selection:text-accent-foreground">
       <Header />
 
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH PULSE CONNECTOR & ABSTRACT TEXTURES */}
       <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
+        {/* Ambient Radial Glow */}
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_50%_0%,color-mix(in_oklab,var(--primary-soft)_70%,transparent),transparent)]" />
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+
+        {/* 1. SUBTLE ABSTRACT TEXTURES (Depth Layering on Margins) */}
+        {/* Left Side Organic Interlocking Structure */}
+        <div className="pointer-events-none absolute left-0 top-1/2 -z-10 h-[500px] w-96 -translate-y-1/2 opacity-80 select-none">
+          <svg className="h-full w-full" viewBox="0 0 400 500" fill="none">
+            <path
+              d="M -50 50 C 150 100, 250 250, 100 450 C -20 550, -100 400, -50 50 Z"
+              fill="rgba(14, 98, 81, 0.025)"
+              stroke="rgba(14, 98, 81, 0.06)"
+              strokeWidth="1.25"
+            />
+            <path
+              d="M -100 120 C 100 160, 180 280, 50 400"
+              stroke="rgba(14, 98, 81, 0.04)"
+              strokeWidth="1"
+              strokeDasharray="8 8"
+            />
+            <circle
+              cx="120"
+              cy="180"
+              r="40"
+              fill="rgba(14, 98, 81, 0.015)"
+              stroke="rgba(14, 98, 81, 0.05)"
+              strokeWidth="1"
+            />
+          </svg>
+        </div>
+
+        {/* Right Side Connectivity & Pillar Contours */}
+        <div className="pointer-events-none absolute right-0 top-1/2 -z-10 h-[500px] w-96 -translate-y-1/2 opacity-80 select-none">
+          <svg className="h-full w-full" viewBox="0 0 400 500" fill="none">
+            <path
+              d="M 450 30 C 250 120, 150 280, 300 460 C 420 540, 500 350, 450 30 Z"
+              fill="rgba(14, 98, 81, 0.025)"
+              stroke="rgba(14, 98, 81, 0.06)"
+              strokeWidth="1.25"
+            />
+            <path
+              d="M 500 100 C 300 180, 220 300, 380 420"
+              stroke="rgba(14, 98, 81, 0.04)"
+              strokeWidth="1"
+              strokeDasharray="8 8"
+            />
+            <circle
+              cx="270"
+              cy="300"
+              r="50"
+              fill="rgba(14, 98, 81, 0.015)"
+              stroke="rgba(14, 98, 81, 0.05)"
+              strokeWidth="1"
+            />
+          </svg>
+        </div>
+
+        {/* 2. THE "PULSE" CONNECTOR SYSTEM (Horizontal Data Flow Axis) */}
+        <div className="pointer-events-none absolute inset-x-0 top-36 hidden lg:block z-0">
+          <div className="mx-auto max-w-7xl px-8">
+            <svg className="h-10 w-full overflow-visible" viewBox="0 0 1200 40" fill="none">
+              {/* Horizontal Ultra-Thin Connector Line */}
+              <line
+                x1="0"
+                y1="20"
+                x2="1200"
+                y2="20"
+                stroke="rgba(14, 98, 81, 0.14)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+
+              {/* Data Flow Moving Pulse */}
+              <circle cx="200" cy="20" r="3" fill="#14B8A6" className="animate-ping" />
+              <circle cx="1000" cy="20" r="3" fill="#F39C12" className="animate-ping" />
+
+              {/* Node 1 - Left Far Axis */}
+              <g transform="translate(60, 20)">
+                <rect
+                  x="-6"
+                  y="-6"
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="rgba(14, 98, 81, 0.4)"
+                  strokeWidth="1"
+                />
+                <circle cx="0" cy="0" r="2" fill="#0E6251" />
+                <text
+                  x="14"
+                  y="4"
+                  fill="rgba(14, 98, 81, 0.55)"
+                  fontSize="9"
+                  fontFamily="monospace"
+                  fontWeight="600"
+                  letterSpacing="1"
+                >
+                  VERIFIED [0.03s]
+                </text>
+              </g>
+
+              {/* Node 2 - Mid Left Axis */}
+              <g transform="translate(320, 20)">
+                <path
+                  d="M -4 0 L 4 0 M 0 -4 L 0 4"
+                  stroke="rgba(14, 98, 81, 0.4)"
+                  strokeWidth="1.25"
+                />
+                <text
+                  x="10"
+                  y="4"
+                  fill="rgba(14, 98, 81, 0.5)"
+                  fontSize="9"
+                  fontFamily="monospace"
+                  letterSpacing="1"
+                >
+                  TX: #9204A
+                </text>
+              </g>
+
+              {/* Node 3 - Mid Right Axis */}
+              <g transform="translate(880, 20)">
+                <path
+                  d="M -4 0 L 4 0 M 0 -4 L 0 4"
+                  stroke="rgba(14, 98, 81, 0.4)"
+                  strokeWidth="1.25"
+                />
+                <text
+                  x="10"
+                  y="4"
+                  fill="rgba(14, 98, 81, 0.5)"
+                  fontSize="9"
+                  fontFamily="monospace"
+                  letterSpacing="1"
+                >
+                  SYNC: LIVE
+                </text>
+              </g>
+
+              {/* Node 4 - Right Far Axis */}
+              <g transform="translate(1120, 20)">
+                <rect
+                  x="-6"
+                  y="-6"
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="rgba(14, 98, 81, 0.4)"
+                  strokeWidth="1"
+                />
+                <circle cx="0" cy="0" r="2" fill="#0E6251" />
+                <text
+                  x="-120"
+                  y="4"
+                  fill="rgba(14, 98, 81, 0.55)"
+                  fontSize="9"
+                  fontFamily="monospace"
+                  fontWeight="600"
+                  letterSpacing="1"
+                >
+                  PASS-THROUGH [92.4%]
+                </text>
+              </g>
+            </svg>
+          </div>
+        </div>
+
+        {/* MAIN TITLE & TEXT CONTENT */}
+        <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-primary shadow-xs">
             <Lock className="h-3.5 w-3.5" /> Open Financial Ledger & Public Audit
           </span>
@@ -147,7 +313,7 @@ function TransparencyPage() {
               Zero Guesswork
             </span>
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
+          <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl max-w-2xl mx-auto">
             We believe donors deserve line-item clarity. Every donation is tracked from bank
             settlement to field execution with quarterly public audits and zero hidden
             administrative overhead.
