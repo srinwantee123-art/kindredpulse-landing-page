@@ -10,33 +10,79 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as ImpactTrackerRouteImport } from './routes/impact-tracker'
+import { Route as PillarsRouteImport } from './routes/pillars'
+import { Route as TransparencyRouteImport } from './routes/transparency'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactTrackerRoute = ImpactTrackerRouteImport.update({
+  id: '/impact-tracker',
+  path: '/impact-tracker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PillarsRoute = PillarsRouteImport.update({
+  id: '/pillars',
+  path: '/pillars',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransparencyRoute = TransparencyRouteImport.update({
+  id: '/transparency',
+  path: '/transparency',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
+  '/impact-tracker': typeof ImpactTrackerRoute
+  '/pillars': typeof PillarsRoute
+  '/transparency': typeof TransparencyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
+  '/impact-tracker': typeof ImpactTrackerRoute
+  '/pillars': typeof PillarsRoute
+  '/transparency': typeof TransparencyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/donate': typeof DonateRoute
+  '/impact-tracker': typeof ImpactTrackerRoute
+  '/pillars': typeof PillarsRoute
+  '/transparency': typeof TransparencyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/donate' | '/impact-tracker' | '/pillars' | '/transparency'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/donate' | '/impact-tracker' | '/pillars' | '/transparency'
+  id:
+    | '__root__'
+    | '/'
+    | '/donate'
+    | '/impact-tracker'
+    | '/pillars'
+    | '/transparency'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DonateRoute: typeof DonateRoute
+  ImpactTrackerRoute: typeof ImpactTrackerRoute
+  PillarsRoute: typeof PillarsRoute
+  TransparencyRoute: typeof TransparencyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,12 +94,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact-tracker': {
+      id: '/impact-tracker'
+      path: '/impact-tracker'
+      fullPath: '/impact-tracker'
+      preLoaderRoute: typeof ImpactTrackerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pillars': {
+      id: '/pillars'
+      path: '/pillars'
+      fullPath: '/pillars'
+      preLoaderRoute: typeof PillarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transparency': {
+      id: '/transparency'
+      path: '/transparency'
+      fullPath: '/transparency'
+      preLoaderRoute: typeof TransparencyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DonateRoute: DonateRoute,
+  ImpactTrackerRoute: ImpactTrackerRoute,
+  PillarsRoute: PillarsRoute,
+  TransparencyRoute: TransparencyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

@@ -1,8 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { useQuery, queryOptions } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { getImpactMetrics } from "@/lib/impact.functions";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import {
   ArrowRight,
   BookOpen,
@@ -159,40 +161,19 @@ function Landing() {
 
   return (
     <main className="min-h-screen bg-background text-foreground antialiased">
-      {/* NAV */}
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-md">
-        <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--gradient-hero)] text-primary-foreground">
-              <Activity className="h-4 w-4" strokeWidth={2.5} />
-            </span>
-            <span className="text-lg font-semibold tracking-tight">KindredPulse</span>
-          </a>
-          <div className="hidden items-center gap-8 md:flex">
-            <a href="#pillars" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Our Pillars</a>
-            <a href="#transparency" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Transparency</a>
-            <a href="#impact" className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground">Impact Tracker</a>
-          </div>
-          <a
-            href="#donate"
-            className="inline-flex items-center gap-1.5 rounded-full bg-[var(--gradient-accent)] px-4 py-2 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
-          >
-            Donate Now <ArrowRight className="h-3.5 w-3.5" />
-          </a>
-        </nav>
-      </header>
+      <Header />
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden">
+      <section id="top" className="relative overflow-hidden pt-16">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_10%_0%,color-mix(in_oklab,var(--primary-soft)_60%,transparent),transparent),radial-gradient(40%_40%_at_100%_20%,color-mix(in_oklab,var(--accent)_20%,transparent),transparent)]" />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-24 lg:pt-20">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="flex flex-col justify-center">
             <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Verified 501(c)(3) · Audited Quarterly
             </span>
             <h1 className="mt-6 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
               Transform intent<br />
-              into <span className="bg-[var(--gradient-hero)] bg-clip-text text-transparent">measurable impact.</span>
+              into <span className="[background-image:var(--gradient-hero)] bg-clip-text text-transparent">measurable impact.</span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               KindredPulse routes 92¢ of every dollar directly to the field. Choose a cause, watch the impact land, and track every step with radical transparency.
@@ -529,69 +510,7 @@ function Landing() {
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="bg-primary-deep text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--gradient-accent)] text-accent-foreground">
-                  <Activity className="h-4 w-4" strokeWidth={2.5} />
-                </span>
-                <span className="text-lg font-semibold">KindredPulse</span>
-              </div>
-              <p className="mt-4 max-w-sm text-sm text-primary-foreground/70">
-                A registered 501(c)(3) non-profit organization. EIN 84-2917430. Every contribution is tax-deductible to the fullest extent of the law.
-              </p>
-            </div>
-
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Legal</div>
-              <ul className="mt-4 space-y-3 text-sm">
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Privacy Policy</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Terms of Service</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Cookie Policy</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Accessibility</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Transparency</div>
-              <ul className="mt-4 space-y-3 text-sm">
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Annual Report 2025</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">IRS Form 990</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">501(c)(3) Letter</a></li>
-                <li><a href="#" className="text-primary-foreground/80 hover:text-accent">Independent Audit</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <div className="text-xs font-semibold uppercase tracking-widest text-primary-foreground/60">Join the Pulse</div>
-              <p className="mt-4 text-sm text-primary-foreground/70">
-                Monthly impact reports. Zero spam.
-              </p>
-              <form onSubmit={(e) => e.preventDefault()} className="mt-4 flex overflow-hidden rounded-full border border-white/20 bg-white/5 p-1 backdrop-blur">
-                <input
-                  type="email"
-                  placeholder="you@email.com"
-                  className="flex-1 bg-transparent px-4 py-2 text-sm text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none"
-                />
-                <button className="rounded-full bg-[var(--gradient-accent)] px-4 py-2 text-sm font-semibold text-accent-foreground">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-primary-foreground/60 sm:flex-row sm:items-center">
-            <div>© {new Date().getFullYear()} KindredPulse Foundation. All rights reserved.</div>
-            <div className="flex items-center gap-4">
-              <span className="inline-flex items-center gap-1.5"><ShieldCheck className="h-3.5 w-3.5" /> Charity Navigator 100%</span>
-              <span className="inline-flex items-center gap-1.5"><BadgeCheck className="h-3.5 w-3.5" /> GuideStar Platinum</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
