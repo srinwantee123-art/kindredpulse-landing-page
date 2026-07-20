@@ -241,108 +241,220 @@ function ImpactTrackerPage() {
                   <path
                     d="M 40 0 L 0 0 0 40"
                     fill="none"
-                    stroke="rgba(255, 255, 255, 0.06)"
+                    stroke="rgba(255, 255, 255, 0.05)"
                     strokeWidth="1"
                   />
                 </pattern>
-                <radialGradient id="landGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.15)" />
-                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0.02)" />
-                </radialGradient>
+                <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.16)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0.06)" />
+                </linearGradient>
               </defs>
 
               {/* Grid Background */}
               <rect width="1000" height="500" fill="url(#grid)" />
 
-              {/* Equator & Prime Meridian Grid Lines */}
+              {/* Latitude Grid Lines & Labels */}
+              <line
+                x1="0"
+                y1="125"
+                x2="1000"
+                y2="125"
+                stroke="rgba(255, 255, 255, 0.08)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+              <text
+                x="12"
+                y="120"
+                fill="rgba(255, 255, 255, 0.4)"
+                fontSize="10"
+                fontFamily="sans-serif"
+              >
+                45°N
+              </text>
+
               <line
                 x1="0"
                 y1="250"
                 x2="1000"
                 y2="250"
-                stroke="rgba(255, 255, 255, 0.12)"
+                stroke="rgba(255, 255, 255, 0.2)"
+                strokeWidth="1.25"
+                strokeDasharray="6 6"
+              />
+              <text
+                x="12"
+                y="245"
+                fill="rgba(243, 156, 18, 0.7)"
+                fontSize="10"
+                fontWeight="bold"
+                fontFamily="sans-serif"
+              >
+                0° EQUATOR
+              </text>
+
+              <line
+                x1="0"
+                y1="375"
+                x2="1000"
+                y2="375"
+                stroke="rgba(255, 255, 255, 0.08)"
                 strokeWidth="1"
-                strokeDasharray="8 8"
+                strokeDasharray="4 4"
+              />
+              <text
+                x="12"
+                y="370"
+                fill="rgba(255, 255, 255, 0.4)"
+                fontSize="10"
+                fontFamily="sans-serif"
+              >
+                45°S
+              </text>
+
+              {/* Longitude Grid Lines */}
+              <line
+                x1="250"
+                y1="0"
+                x2="250"
+                y2="500"
+                stroke="rgba(255, 255, 255, 0.08)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
               />
               <line
                 x1="500"
                 y1="0"
                 x2="500"
                 y2="500"
-                stroke="rgba(255, 255, 255, 0.12)"
-                strokeWidth="1"
-                strokeDasharray="8 8"
-              />
-
-              {/* Continent Outlines & Landmass Shapes */}
-              {/* North America */}
-              <path
-                d="M 120 100 Q 180 80, 260 110 T 320 180 T 260 260 T 160 240 T 100 160 Z"
-                fill="url(#landGlow)"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1.5"
-              />
-              {/* South America */}
-              <path
-                d="M 280 270 Q 340 280, 350 340 T 300 440 T 240 370 T 260 290 Z"
-                fill="url(#landGlow)"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1.5"
-              />
-              {/* Europe & Africa */}
-              <path
-                d="M 450 90 Q 550 70, 580 130 T 620 220 T 560 380 T 460 340 T 480 200 Z"
-                fill="url(#landGlow)"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1.5"
-              />
-              {/* Asia */}
-              <path
-                d="M 600 80 Q 750 60, 880 120 T 920 250 T 780 280 T 640 180 Z"
-                fill="url(#landGlow)"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1.5"
-              />
-              {/* Australia */}
-              <path
-                d="M 780 320 Q 860 310, 890 360 T 820 420 T 760 370 Z"
-                fill="url(#landGlow)"
-                stroke="rgba(255, 255, 255, 0.25)"
-                strokeWidth="1.5"
-              />
-
-              {/* Connecting Telemetry Arcs */}
-              <path
-                d="M 260 480 Q 420 300, 580 550 M 580 550 Q 660 400, 740 440 M 740 440 Q 790 480, 840 520 M 260 480 Q 400 360, 560 280"
-                stroke="#F39C12"
-                strokeWidth="1.75"
+                stroke="rgba(255, 255, 255, 0.15)"
+                strokeWidth="1.25"
                 strokeDasharray="6 6"
               />
+              <line
+                x1="750"
+                y1="0"
+                x2="750"
+                y2="500"
+                stroke="rgba(255, 255, 255, 0.08)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
 
-              {/* Glowing Impact Radius Rings */}
-              <circle
-                cx="580"
-                cy="275"
-                r="55"
-                fill="none"
-                stroke="rgba(243, 156, 18, 0.3)"
-                strokeWidth="1.5"
+              {/* ACCURATE GEOGRAPHIC CONTINENT VECTOR PATHS */}
+              {/* North America */}
+              <path
+                d="M 60 70 L 140 50 L 220 55 L 290 80 L 310 130 L 270 170 L 240 160 L 210 200 L 230 230 L 190 230 L 170 190 L 130 170 L 90 140 Z M 320 30 L 380 20 L 390 70 L 340 85 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
               />
-              <circle
-                cx="740"
-                cy="220"
-                r="45"
-                fill="none"
-                stroke="rgba(243, 156, 18, 0.3)"
-                strokeWidth="1.5"
+
+              {/* South America */}
+              <path
+                d="M 230 240 L 310 230 L 350 270 L 330 350 L 280 430 L 255 420 L 260 330 L 220 280 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
               />
-              <circle
-                cx="260"
-                cy="240"
-                r="40"
-                fill="none"
-                stroke="rgba(243, 156, 18, 0.3)"
-                strokeWidth="1.5"
+
+              {/* Europe */}
+              <path
+                d="M 460 100 L 510 70 L 580 80 L 600 130 L 540 150 L 490 140 L 460 120 Z M 500 50 L 550 35 L 540 85 L 500 80 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
+              />
+
+              {/* Africa */}
+              <path
+                d="M 440 160 L 570 160 L 630 220 L 590 300 L 540 370 L 490 370 L 460 290 L 430 210 Z M 640 310 L 655 310 L 645 350 L 635 340 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
+              />
+
+              {/* Asia */}
+              <path
+                d="M 580 80 L 750 45 L 900 65 L 920 130 L 860 180 L 780 220 L 720 250 L 690 180 L 610 130 Z M 700 180 L 760 180 L 735 240 Z M 770 230 L 880 240 L 860 280 L 790 270 Z M 895 110 L 915 110 L 905 160 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
+              />
+
+              {/* Australia & Oceania */}
+              <path
+                d="M 780 320 L 890 310 L 910 370 L 860 410 L 770 380 Z M 920 380 L 935 380 L 925 420 Z"
+                fill="url(#landGrad)"
+                stroke="rgba(255, 255, 255, 0.35)"
+                strokeWidth="1.25"
+                strokeLinejoin="round"
+              />
+
+              {/* Region Labels */}
+              <text
+                x="160"
+                y="110"
+                fill="rgba(255, 255, 255, 0.3)"
+                fontSize="10"
+                fontWeight="bold"
+                letterSpacing="2"
+              >
+                AMERICAS
+              </text>
+              <text
+                x="500"
+                y="210"
+                fill="rgba(255, 255, 255, 0.3)"
+                fontSize="10"
+                fontWeight="bold"
+                letterSpacing="2"
+              >
+                AFRICA
+              </text>
+              <text
+                x="500"
+                y="110"
+                fill="rgba(255, 255, 255, 0.3)"
+                fontSize="10"
+                fontWeight="bold"
+                letterSpacing="2"
+              >
+                EUROPE
+              </text>
+              <text
+                x="740"
+                y="110"
+                fill="rgba(255, 255, 255, 0.3)"
+                fontSize="10"
+                fontWeight="bold"
+                letterSpacing="2"
+              >
+                ASIA
+              </text>
+              <text
+                x="810"
+                y="350"
+                fill="rgba(255, 255, 255, 0.3)"
+                fontSize="10"
+                fontWeight="bold"
+                letterSpacing="2"
+              >
+                OCEANIA
+              </text>
+
+              {/* Structured Field Arcs */}
+              <path
+                d="M 580 280 Q 660 180, 740 220 M 740 220 Q 790 230, 840 260 M 230 230 Q 255 285, 280 340 M 560 140 Q 570 210, 580 280"
+                stroke="#F39C12"
+                strokeWidth="1.75"
+                strokeDasharray="6 4"
               />
             </svg>
 
