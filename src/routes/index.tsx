@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { useQuery, queryOptions } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { getImpactMetrics } from "@/lib/impact.functions";
 import {
   ArrowRight,
   BookOpen,
@@ -20,8 +23,22 @@ import {
 import heroImage from "@/assets/hero-impact.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) =>
+    context.queryClient.ensureQueryData(impactQueryOptions(getImpactMetrics)),
   component: Landing,
 });
+
+type ImpactData = Awaited<ReturnType<typeof getImpactMetrics>>;
+
+function impactQueryOptions(fn: () => Promise<ImpactData>) {
+  return queryOptions({
+    queryKey: ["impact-metrics"],
+    queryFn: () => fn(),
+    refetchInterval: 5000,
+    refetchIntervalInBackground: false,
+    staleTime: 4000,
+  });
+}
 
 const PILLARS = [
   {
@@ -57,15 +74,21 @@ const PILLARS = [
 ];
 
 function useCountUp(target: number, active: boolean, duration = 1600) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(active ? target : 0);
+  const fromRef = useRef(0);
   useEffect(() => {
     if (!active) return;
+    const from = fromRef.current;
+    const delta = target - from;
+    if (delta === 0) return;
     let raf = 0;
     const start = performance.now();
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      setValue(Math.round(target * eased));
+      const next = Math.round(from + delta * eased);
+      setValue(next);
+      fromRef.current = next;
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -101,12 +124,38 @@ function ImpactCounter({ value, label, suffix = "" }: { value: number; label: st
   );
 }
 
+function useRelativeTime(iso: string | undefined) {
+  const [, tick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => tick((n) => n + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+  if (!iso) return "just now";
+  const s = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+  if (s < 5) return "just now";
+  if (s < 60) return `${s}s ago`;
+  const m = Math.floor(s / 60);
+  return `${m}m ago`;
+}
+
 function Landing() {
   const [amount, setAmount] = useState<string>("50");
   const [custom, setCustom] = useState("");
   const [cadence, setCadence] = useState<"monthly" | "onetime">("monthly");
 
   const amounts = ["25", "50", "100"];
+
+  const impactFn = useServerFn(getImpactMetrics);
+  const { data: impact } = useQuery(impactQueryOptions(impactFn));
+  const lives = impact?.lives ?? 0;
+  const meals = impact?.meals ?? 0;
+  const animals = impact?.animals ?? 0;
+  const raised = impact?.monthly.raisedCents ?? 0;
+  const goal = impact?.monthly.goalCents ?? 1;
+  const pct = impact?.monthly.pct ?? 0;
+  const refreshed = useRelativeTime(impact?.updatedAt);
+  const usd = (cents: number) =>
+    `$${Math.round(cents / 100).toLocaleString()}`;
 
   return (
     <main className="min-h-screen bg-background text-foreground antialiased">
@@ -272,23 +321,34 @@ function Landing() {
               <div className="flex items-baseline justify-between">
                 <div>
                   <div className="text-xs font-medium uppercase tracking-widest text-primary-foreground/70">
-                    July distribution goal
+                    Monthly distribution goal
                   </div>
-                  <div className="mt-1 text-2xl font-bold">$1,842,000 / $2,500,000</div>
+                  <div className="mt-1 text-2xl font-bold tabular-nums">
+                    {usd(raised)} <span className="text-primary-foreground/60">/ {usd(goal)}</span>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-accent">73%</div>
+                <div className="text-3xl font-bold text-accent tabular-nums">{pct}%</div>
               </div>
               <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-white/15">
-                <div className="h-full rounded-full bg-[var(--gradient-accent)] shadow-[var(--shadow-accent)]" style={{ width: "73%" }} />
+                <div
+                  className="h-full rounded-full bg-[var(--gradient-accent)] shadow-[var(--shadow-accent)] transition-[width] duration-1000 ease-out"
+                  style={{ width: `${pct}%` }}
+                />
               </div>
-              <div className="mt-3 text-xs text-primary-foreground/70">Refreshed 42 seconds ago</div>
+              <div className="mt-3 flex items-center gap-2 text-xs text-primary-foreground/70">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                Live · refreshed {refreshed}
+              </div>
             </div>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <ImpactCounter value={2841029} label="Lives Impacted" />
-            <ImpactCounter value={14620584} label="Meals Delivered" />
-            <ImpactCounter value={87412} label="Animals Rescued" />
+            <ImpactCounter value={lives} label="Lives Impacted" />
+            <ImpactCounter value={meals} label="Meals Delivered" />
+            <ImpactCounter value={animals} label="Animals Rescued" />
           </div>
         </div>
       </section>
