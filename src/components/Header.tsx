@@ -11,6 +11,7 @@ import {
   Users,
   ShieldCheck,
   ChevronRight,
+  BarChart3,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -37,6 +38,7 @@ export function Header() {
     { label: "Our Pillars", path: "/pillars" },
     { label: "Transparency", path: "/transparency" },
     { label: "Impact Tracker", path: "/impact-tracker" },
+    { label: "Analytics & Stats", path: "/stats" },
   ];
 
   const drawerSections = [
@@ -69,6 +71,11 @@ export function Header() {
           label: "Regional Impact Ledger",
           desc: "Real-time field distribution updates",
           path: "/impact-tracker",
+        },
+        {
+          label: "Graphical Statistics & Pie Chart",
+          desc: "Multi-year growth & allocation pie chart",
+          path: "/stats",
         },
         {
           label: "Beneficiary Testimonials",

@@ -50,6 +50,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  to="/stats"
+                  className="text-primary-foreground/80 hover:text-accent transition-colors"
+                >
+                  Analytics & Stats
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/donate"
                   className="text-primary-foreground/80 hover:text-accent transition-colors"
                 >

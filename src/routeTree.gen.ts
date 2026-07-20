@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as ImpactTrackerRouteImport } from './routes/impact-tracker'
 import { Route as PillarsRouteImport } from './routes/pillars'
+import { Route as StatsRouteImport } from './routes/stats'
 import { Route as TransparencyRouteImport } from './routes/transparency'
 
 const IndexRoute = IndexRouteImport.update({
@@ -35,6 +36,11 @@ const PillarsRoute = PillarsRouteImport.update({
   path: '/pillars',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StatsRoute = StatsRouteImport.update({
+  id: '/stats',
+  path: '/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TransparencyRoute = TransparencyRouteImport.update({
   id: '/transparency',
   path: '/transparency',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/donate': typeof DonateRoute
   '/impact-tracker': typeof ImpactTrackerRoute
   '/pillars': typeof PillarsRoute
+  '/stats': typeof StatsRoute
   '/transparency': typeof TransparencyRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/donate': typeof DonateRoute
   '/impact-tracker': typeof ImpactTrackerRoute
   '/pillars': typeof PillarsRoute
+  '/stats': typeof StatsRoute
   '/transparency': typeof TransparencyRoute
 }
 export interface FileRoutesById {
@@ -61,19 +69,33 @@ export interface FileRoutesById {
   '/donate': typeof DonateRoute
   '/impact-tracker': typeof ImpactTrackerRoute
   '/pillars': typeof PillarsRoute
+  '/stats': typeof StatsRoute
   '/transparency': typeof TransparencyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/donate' | '/impact-tracker' | '/pillars' | '/transparency'
+  fullPaths:
+    | '/'
+    | '/donate'
+    | '/impact-tracker'
+    | '/pillars'
+    | '/stats'
+    | '/transparency'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/donate' | '/impact-tracker' | '/pillars' | '/transparency'
+  to:
+    | '/'
+    | '/donate'
+    | '/impact-tracker'
+    | '/pillars'
+    | '/stats'
+    | '/transparency'
   id:
     | '__root__'
     | '/'
     | '/donate'
     | '/impact-tracker'
     | '/pillars'
+    | '/stats'
     | '/transparency'
   fileRoutesById: FileRoutesById
 }
@@ -82,6 +104,7 @@ export interface RootRouteChildren {
   DonateRoute: typeof DonateRoute
   ImpactTrackerRoute: typeof ImpactTrackerRoute
   PillarsRoute: typeof PillarsRoute
+  StatsRoute: typeof StatsRoute
   TransparencyRoute: typeof TransparencyRoute
 }
 
@@ -115,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PillarsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/stats': {
+      id: '/stats'
+      path: '/stats'
+      fullPath: '/stats'
+      preLoaderRoute: typeof StatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/transparency': {
       id: '/transparency'
       path: '/transparency'
@@ -130,6 +160,7 @@ const rootRouteChildren: RootRouteChildren = {
   DonateRoute: DonateRoute,
   ImpactTrackerRoute: ImpactTrackerRoute,
   PillarsRoute: PillarsRoute,
+  StatsRoute: StatsRoute,
   TransparencyRoute: TransparencyRoute,
 }
 export const routeTree = rootRouteImport
