@@ -321,23 +321,34 @@ function Landing() {
               <div className="flex items-baseline justify-between">
                 <div>
                   <div className="text-xs font-medium uppercase tracking-widest text-primary-foreground/70">
-                    July distribution goal
+                    Monthly distribution goal
                   </div>
-                  <div className="mt-1 text-2xl font-bold">$1,842,000 / $2,500,000</div>
+                  <div className="mt-1 text-2xl font-bold tabular-nums">
+                    {usd(raised)} <span className="text-primary-foreground/60">/ {usd(goal)}</span>
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-accent">73%</div>
+                <div className="text-3xl font-bold text-accent tabular-nums">{pct}%</div>
               </div>
               <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-white/15">
-                <div className="h-full rounded-full bg-[var(--gradient-accent)] shadow-[var(--shadow-accent)]" style={{ width: "73%" }} />
+                <div
+                  className="h-full rounded-full bg-[var(--gradient-accent)] shadow-[var(--shadow-accent)] transition-[width] duration-1000 ease-out"
+                  style={{ width: `${pct}%` }}
+                />
               </div>
-              <div className="mt-3 text-xs text-primary-foreground/70">Refreshed 42 seconds ago</div>
+              <div className="mt-3 flex items-center gap-2 text-xs text-primary-foreground/70">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                </span>
+                Live · refreshed {refreshed}
+              </div>
             </div>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <ImpactCounter value={2841029} label="Lives Impacted" />
-            <ImpactCounter value={14620584} label="Meals Delivered" />
-            <ImpactCounter value={87412} label="Animals Rescued" />
+            <ImpactCounter value={lives} label="Lives Impacted" />
+            <ImpactCounter value={meals} label="Meals Delivered" />
+            <ImpactCounter value={animals} label="Animals Rescued" />
           </div>
         </div>
       </section>
