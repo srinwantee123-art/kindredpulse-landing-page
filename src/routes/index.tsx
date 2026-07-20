@@ -1,5 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import { useQuery, queryOptions } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { getImpactMetrics } from "@/lib/impact.functions";
 import {
   ArrowRight,
   BookOpen,
@@ -20,8 +23,20 @@ import {
 import heroImage from "@/assets/hero-impact.jpg";
 
 export const Route = createFileRoute("/")({
+  loader: ({ context }) =>
+    context.queryClient.ensureQueryData(impactQueryOptions(getImpactMetrics)),
   component: Landing,
 });
+
+function impactQueryOptions(fn: typeof getImpactMetrics) {
+  return queryOptions({
+    queryKey: ["impact-metrics"],
+    queryFn: () => fn(),
+    refetchInterval: 5000,
+    refetchIntervalInBackground: false,
+    staleTime: 4000,
+  });
+}
 
 const PILLARS = [
   {
@@ -57,15 +72,21 @@ const PILLARS = [
 ];
 
 function useCountUp(target: number, active: boolean, duration = 1600) {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(active ? target : 0);
+  const fromRef = useRef(0);
   useEffect(() => {
     if (!active) return;
+    const from = fromRef.current;
+    const delta = target - from;
+    if (delta === 0) return;
     let raf = 0;
     const start = performance.now();
     const tick = (t: number) => {
       const p = Math.min(1, (t - start) / duration);
       const eased = 1 - Math.pow(1 - p, 3);
-      setValue(Math.round(target * eased));
+      const next = Math.round(from + delta * eased);
+      setValue(next);
+      fromRef.current = next;
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -99,6 +120,20 @@ function ImpactCounter({ value, label, suffix = "" }: { value: number; label: st
       </div>
     </div>
   );
+}
+
+function useRelativeTime(iso: string | undefined) {
+  const [, tick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => tick((n) => n + 1), 1000);
+    return () => clearInterval(id);
+  }, []);
+  if (!iso) return "just now";
+  const s = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+  if (s < 5) return "just now";
+  if (s < 60) return `${s}s ago`;
+  const m = Math.floor(s / 60);
+  return `${m}m ago`;
 }
 
 function Landing() {
