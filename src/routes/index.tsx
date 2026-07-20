@@ -21,6 +21,9 @@ import {
   Bitcoin,
   Wallet,
   Check,
+  ChevronLeft,
+  ChevronRight,
+  MapPin,
 } from "lucide-react";
 import heroImage from "@/assets/hero-impact.jpg";
 
@@ -31,6 +34,48 @@ export const Route = createFileRoute("/")({
 });
 
 type ImpactData = Awaited<ReturnType<typeof getImpactMetrics>>;
+
+const HERO_SLIDES = [
+  {
+    image: heroImage,
+    alt: "A child learning alongside a rescued dog in a lush forest — dual imagery of human and planetary resilience",
+    liveText: "A donor in Berlin funded 42 school meals in Nairobi.",
+    location: "Nairobi, Kenya",
+    badge: "+128,402 lives",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80",
+    alt: "Children smiling in a newly built community school classroom with learning materials",
+    liveText: "A corporate sponsor in Tokyo funded a digital learning lab for 350 children.",
+    location: "Dhaka, Bangladesh",
+    badge: "+64,200 students",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80",
+    alt: "Medical team delivering emergency healthcare and supplies in a rural clinic",
+    liveText: "A donor in Toronto funded emergency pediatric surgery and medical kits.",
+    location: "Antigua, Guatemala",
+    badge: "+14,350 patients",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80",
+    alt: "Local farmers harvesting sustainable crops funded by solar irrigation systems",
+    liveText: "A monthly pulse donor in London deployed solar irrigation for 80 farming families.",
+    location: "Mendoza, Peru",
+    badge: "+1.8M meals",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
+    alt: "Community reforestation project and clean water well installation in rural village",
+    liveText: "A donor in Sydney funded clean drinking water access for 2,400 villagers.",
+    location: "Cebu, Philippines",
+    badge: "+85 clean wells",
+  },
+];
 
 function impactQueryOptions(fn: () => Promise<ImpactData>) {
   return queryOptions({
@@ -155,6 +200,20 @@ function Landing() {
   const [custom, setCustom] = useState("");
   const [cadence, setCadence] = useState<"monthly" | "onetime">("monthly");
 
+  // Automatic slideshow state
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  const currentSlide = HERO_SLIDES[slideIndex];
+
   const amounts = ["25", "50", "100"];
 
   const impactFn = useServerFn(getImpactMetrics);
@@ -249,32 +308,90 @@ function Landing() {
             </div>
           </div>
 
-          {/* Visual */}
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-elegant)]">
-              <img
-                src={heroImage}
-                alt="A child learning alongside a rescued dog in a lush forest — dual imagery of human and planetary resilience"
-                width={1200}
-                height={1400}
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-deep/85 via-primary-deep/30 to-transparent p-6 pt-24">
-                <div className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-xl">
-                  <div className="text-xs font-medium uppercase tracking-widest text-white/80">
-                    Live · Right now
+          {/* Visual Automatic Image Slideshow */}
+          <div
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            className="relative group select-none"
+          >
+            <div className="relative h-[480px] sm:h-[540px] w-full overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-elegant)] bg-slate-900">
+              {/* Image Stack with Cross-Fade */}
+              {HERO_SLIDES.map((slide, idx) => (
+                <div
+                  key={slide.location}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                    idx === slideIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
+                  }`}
+                >
+                  <img
+                    src={slide.image}
+                    alt={slide.alt}
+                    width={1200}
+                    height={1400}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+
+              {/* Bottom Live Activity Overlay */}
+              <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-primary-deep/90 via-primary-deep/40 to-transparent p-6 pt-24">
+                <div className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-xl transition-all duration-300">
+                  <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-widest text-white/80">
+                    <span className="flex items-center gap-1.5">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" /> Live ·
+                      Right now
+                    </span>
+                    <span className="flex items-center gap-1 text-amber-200">
+                      <MapPin className="h-3 w-3" /> {currentSlide.location}
+                    </span>
                   </div>
-                  <div className="mt-1 text-lg font-semibold text-white">
-                    A donor in Berlin funded 42 school meals in Nairobi.
+                  <div className="mt-1 text-base sm:text-lg font-semibold text-white transition-all">
+                    {currentSlide.liveText}
                   </div>
                 </div>
+
+                {/* Slideshow Progress Bar Indicators */}
+                <div className="mt-4 flex items-center justify-center gap-2">
+                  {HERO_SLIDES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSlideIndex(idx)}
+                      aria-label={`Go to slide ${idx + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === slideIndex
+                          ? "w-8 bg-amber-400"
+                          : "w-2 bg-white/40 hover:bg-white/70"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
+
+              {/* Manual Left / Right Chevron Arrows */}
+              <button
+                onClick={() =>
+                  setSlideIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+                }
+                aria-label="Previous slide"
+                className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-2 text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-black/60 backdrop-blur-md"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setSlideIndex((prev) => (prev + 1) % HERO_SLIDES.length)}
+                aria-label="Next slide"
+                className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-black/30 p-2 text-white opacity-0 transition-all group-hover:opacity-100 hover:bg-black/60 backdrop-blur-md"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
             </div>
-            <div className="glass-card absolute -right-3 -top-3 hidden rotate-3 rounded-2xl px-4 py-3 shadow-[var(--shadow-glass)] md:block">
+
+            {/* Dynamic Floating Impact Badge */}
+            <div className="glass-card absolute -right-3 -top-3 z-30 hidden rotate-3 rounded-2xl px-4 py-3 shadow-[var(--shadow-glass)] transition-all duration-300 md:block">
               <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
-                Impact this month
+                Impact This Month
               </div>
-              <div className="text-2xl font-bold text-primary-deep">+128,402 lives</div>
+              <div className="text-2xl font-bold text-primary-deep">{currentSlide.badge}</div>
             </div>
           </div>
         </div>
