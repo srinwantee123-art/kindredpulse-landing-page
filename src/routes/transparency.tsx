@@ -141,10 +141,10 @@ function TransparencyPage() {
             <Lock className="h-3.5 w-3.5" /> Open Financial Ledger & Public Audit
           </span>
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Radical Transparency.
+            Radical Transparency
             <br />
             <span className="[background-image:var(--gradient-hero)] bg-clip-text text-transparent">
-              Zero Guesswork.
+              Zero Guesswork
             </span>
           </h1>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl">
