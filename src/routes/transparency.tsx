@@ -143,7 +143,7 @@ function TransparencyPage() {
           <h1 className="mt-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Radical Transparency.
             <br />
-            <span className="bg-[var(--gradient-hero)] bg-clip-text text-transparent">
+            <span className="[background-image:var(--gradient-hero)] bg-clip-text text-transparent">
               Zero Guesswork.
             </span>
           </h1>
@@ -243,7 +243,7 @@ function TransparencyPage() {
                       </div>
                       <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-muted">
                         <div
-                          className="h-full bg-[var(--gradient-hero)] rounded-full"
+                          className="h-full bg-gradient-hero rounded-full"
                           style={{ width: `${p.pct * 3.5}%` }}
                         />
                       </div>

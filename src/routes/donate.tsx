@@ -327,7 +327,7 @@ function DonatePage() {
                       <button
                         type="button"
                         onClick={() => setStep(2)}
-                        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--gradient-accent)] py-4 text-sm font-bold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:scale-[1.01]"
+                        className="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-accent py-4 text-sm font-bold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:scale-[1.01]"
                       >
                         <span>Next: Choose Allocation (${effectiveAmount})</span>
                         <ArrowRight className="h-4 w-4" />
@@ -405,6 +405,24 @@ function DonatePage() {
                   {/* STEP 3: PAYMENT INTERFACE */}
                   {step === 3 && (
                     <div className="space-y-6">
+                      {/* Summary card */}
+                      <div className="rounded-2xl border border-border/80 bg-muted/40 p-4">
+                        <div className="flex items-center justify-between text-xs text-muted-foreground">
+                          <span>Target Cause:</span>
+                          <span className="font-semibold text-foreground capitalize">{cause}</span>
+                        </div>
+                        <div className="mt-1 flex items-center justify-between text-xs text-muted-foreground">
+                          <span>Cadence:</span>
+                          <span className="font-semibold text-foreground capitalize">
+                            {cadence}
+                          </span>
+                        </div>
+                        <div className="mt-2 border-t border-border/60 pt-2 flex items-center justify-between text-sm font-bold text-foreground">
+                          <span>Total Payment:</span>
+                          <span className="text-primary-deep text-lg">${effectiveAmount}</span>
+                        </div>
+                      </div>
+
                       {/* Payment Method Switcher */}
                       <div className="grid grid-cols-4 gap-2">
                         {[
@@ -422,7 +440,7 @@ function DonatePage() {
                             className={`flex flex-col items-center justify-center rounded-xl border p-2.5 text-xs font-semibold transition-all ${
                               paymentMethod === id
                                 ? "border-primary bg-primary/10 text-primary"
-                                : "border-border bg-background text-muted-foreground hover:text-foreground"
+                                : "border-border bg-card text-muted-foreground hover:text-foreground"
                             }`}
                           >
                             <Icon className="h-4 w-4 mb-1" />
@@ -431,33 +449,32 @@ function DonatePage() {
                         ))}
                       </div>
 
-                      {/* Donor Information */}
+                      {/* Form Inputs */}
                       <div className="space-y-3">
                         <div>
-                          <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground block mb-1">
+                          <label className="mb-1 block text-xs font-medium text-muted-foreground">
                             Full Name
                           </label>
                           <input
                             type="text"
                             required
-                            placeholder="Jane Doe"
+                            placeholder="Eleanor Vance"
                             value={fullName}
                             onChange={(e) => setFullName(e.target.value)}
-                            className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs sm:text-sm text-foreground focus:border-primary focus:outline-none"
+                            className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm font-medium focus:border-primary focus:outline-none"
                           />
                         </div>
-
                         <div>
-                          <label className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground block mb-1">
-                            Email Address (for 501(c)(3) Tax Receipt)
+                          <label className="mb-1 block text-xs font-medium text-muted-foreground">
+                            Email Address for Receipt & Impact Updates
                           </label>
                           <input
                             type="email"
                             required
-                            placeholder="jane@example.com"
+                            placeholder="eleanor@example.org"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-xs sm:text-sm text-foreground focus:border-primary focus:outline-none"
+                            className="w-full rounded-xl border border-border bg-background px-3.5 py-2.5 text-sm font-medium focus:border-primary focus:outline-none"
                           />
                         </div>
                       </div>

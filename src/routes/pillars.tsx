@@ -266,7 +266,7 @@ function PillarsPage() {
                         <Link
                           to="/donate"
                           search={{ cause: pillar.causeKey }}
-                          className="inline-flex items-center gap-2 rounded-xl bg-[var(--gradient-accent)] px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-all hover:scale-105 hover:shadow-lg"
+                          className="inline-flex items-center gap-2 rounded-xl bg-gradient-accent px-5 py-3 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-all hover:scale-105 hover:shadow-lg"
                         >
                           <span>{pillar.fundLabel}</span>
                           <ArrowRight className="h-4 w-4" />

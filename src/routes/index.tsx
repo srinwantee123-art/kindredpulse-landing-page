@@ -186,7 +186,7 @@ function Landing() {
               <br />
               into{" "}
               <span className="[background-image:var(--gradient-hero)] bg-clip-text text-transparent">
-                measurable impact.
+                measurable impact
               </span>
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -229,7 +229,7 @@ function Landing() {
               </div>
               <a
                 href="#donate"
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--gradient-accent)] px-4 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-accent px-4 py-3.5 text-sm font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5"
               >
                 Donate ${custom || amount || "0"} now <ArrowRight className="h-4 w-4" />
               </a>
@@ -303,8 +303,8 @@ function Landing() {
                 href="#donate"
                 className="glass-card group relative overflow-hidden rounded-2xl p-7 shadow-[var(--shadow-glass)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]"
               >
-                <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--gradient-accent)] transition-transform duration-500 group-hover:scale-x-100" />
-                <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary-deep transition-colors group-hover:bg-[var(--gradient-hero)] group-hover:text-primary-foreground">
+                <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gradient-accent transition-transform duration-500 group-hover:scale-x-100" />
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary-deep transition-colors group-hover:bg-gradient-hero group-hover:text-primary-foreground">
                   <Icon className="h-6 w-6" strokeWidth={1.75} />
                 </div>
                 <h3 className="mt-5 text-xl font-semibold tracking-tight">{title}</h3>
@@ -322,43 +322,44 @@ function Landing() {
       {/* IMPACT TRACKER */}
       <section
         id="impact"
-        className="relative overflow-hidden bg-[var(--gradient-hero)] text-primary-foreground"
+        className="relative overflow-hidden bg-primary-deep bg-gradient-hero text-white shadow-xl"
       >
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:items-end">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+              <div className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                 Live Impact Tracker
               </div>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 Real numbers.
                 <br />
                 Updated in real time.
               </h2>
-              <p className="mt-4 max-w-md text-primary-foreground/80">
+              <p className="mt-4 max-w-md text-white/90 leading-relaxed font-normal sm:text-lg">
                 Every metric below streams directly from our field partners' verified logs — no
                 marketing, no rounding.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/15 bg-white/10 p-6 backdrop-blur-md">
+            <div className="rounded-2xl border border-white/25 bg-white/15 p-6 backdrop-blur-xl shadow-lg sm:p-8">
               <div className="flex items-baseline justify-between">
                 <div>
-                  <div className="text-xs font-medium uppercase tracking-widest text-primary-foreground/70">
+                  <div className="text-xs font-semibold uppercase tracking-widest text-amber-200">
                     Monthly distribution goal
                   </div>
-                  <div className="mt-1 text-2xl font-bold tabular-nums">
-                    {usd(raised)} <span className="text-primary-foreground/60">/ {usd(goal)}</span>
+                  <div className="mt-1.5 text-3xl font-extrabold tracking-tight text-white tabular-nums">
+                    {usd(raised)}{" "}
+                    <span className="text-white/70 font-semibold text-xl">/ {usd(goal)}</span>
                   </div>
                 </div>
-                <div className="text-3xl font-bold text-accent tabular-nums">{pct}%</div>
+                <div className="text-3xl font-extrabold text-accent tabular-nums">{pct}%</div>
               </div>
-              <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-white/15">
+              <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-white/20">
                 <div
-                  className="h-full rounded-full bg-[var(--gradient-accent)] shadow-[var(--shadow-accent)] transition-[width] duration-1000 ease-out"
+                  className="h-full rounded-full bg-gradient-accent shadow-[var(--shadow-accent)] transition-[width] duration-1000 ease-out"
                   style={{ width: `${pct}%` }}
                 />
               </div>
-              <div className="mt-3 flex items-center gap-2 text-xs text-primary-foreground/70">
+              <div className="mt-4 flex items-center gap-2 text-xs font-semibold text-white/90">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -567,7 +568,7 @@ function Landing() {
                 </p>
               </div>
 
-              <button className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--gradient-accent)] px-4 py-4 text-base font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5">
+              <button className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-accent px-4 py-4 text-base font-semibold text-accent-foreground shadow-[var(--shadow-accent)] transition-transform hover:-translate-y-0.5">
                 Complete secure donation <ArrowRight className="h-4 w-4" />
               </button>
 

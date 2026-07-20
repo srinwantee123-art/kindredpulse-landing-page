@@ -8,7 +8,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Link to="/" className="flex items-center gap-2">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-[var(--gradient-accent)] text-accent-foreground">
+              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-accent text-accent-foreground">
                 <Activity className="h-4 w-4" strokeWidth={2.5} />
               </span>
               <span className="text-lg font-semibold tracking-tight text-white">KindredPulse</span>
@@ -117,7 +117,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="rounded-full bg-[var(--gradient-accent)] px-4 py-2 text-xs font-bold text-accent-foreground transition-transform hover:scale-105"
+                className="rounded-full bg-gradient-accent px-4 py-2 text-xs font-bold text-accent-foreground transition-transform hover:scale-105"
               >
                 Join
               </button>
