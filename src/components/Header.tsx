@@ -118,28 +118,27 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-6 lg:px-8">
-        <nav className="flex h-15 w-full max-w-7xl items-center justify-between rounded-full border border-border/80 bg-background/85 px-5 sm:px-8 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-300">
-          {/* Left Container: Far-Left Entry Point + Logo */}
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setIsMenuOpen(true)}
-              aria-label="Open directory menu"
-              className="inline-flex items-center gap-1.5 rounded-full border border-border/80 bg-card/70 px-3 py-1.5 text-xs font-semibold text-foreground shadow-xs transition-all hover:bg-card hover:border-primary/50 focus:outline-none"
-            >
-              <Menu className="h-4 w-4 text-foreground" />
-              <span>All</span>
-            </button>
+      <header className="fixed top-4 inset-x-0 z-50 flex items-center gap-3 justify-center px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto pointer-events-none">
+        {/* Standalone All Menu Button outside Nav */}
+        <button
+          onClick={() => setIsMenuOpen(true)}
+          aria-label="Open directory menu"
+          className="pointer-events-auto inline-flex h-14 items-center gap-2 rounded-full border border-border/80 bg-background/85 px-4 sm:px-5 text-sm font-semibold text-foreground shadow-[var(--shadow-card)] backdrop-blur-xl transition-all hover:bg-card hover:border-primary/50 hover:scale-105 focus:outline-none shrink-0"
+        >
+          <Menu className="h-4 w-4 text-foreground" />
+          <span>All</span>
+        </button>
 
-            <Link to="/" className="flex items-center gap-2 group">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-hero text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
-                <Activity className="h-4 w-4" strokeWidth={2.5} />
-              </span>
-              <span className="text-base font-semibold tracking-tight text-foreground">
-                KindredPulse
-              </span>
-            </Link>
-          </div>
+        {/* Main Nav Bar */}
+        <nav className="pointer-events-auto flex h-14 w-full items-center justify-between rounded-full border border-border/80 bg-background/85 px-4 sm:px-8 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-300">
+          <Link to="/" className="flex items-center gap-2 group">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-hero text-primary-foreground shadow-sm transition-transform group-hover:scale-105">
+              <Activity className="h-4 w-4" strokeWidth={2.5} />
+            </span>
+            <span className="text-base font-semibold tracking-tight text-foreground">
+              KindredPulse
+            </span>
+          </Link>
 
           {/* Desktop Nav Items */}
           <div className="hidden items-center gap-2 md:flex">
