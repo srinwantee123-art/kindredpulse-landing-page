@@ -118,8 +118,8 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-4 sm:px-6">
-        <nav className="flex h-14 w-full max-w-5xl items-center justify-between rounded-full border border-border/80 bg-background/85 px-4 sm:px-6 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-300">
+      <header className="fixed top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-6 lg:px-8">
+        <nav className="flex h-15 w-full max-w-7xl items-center justify-between rounded-full border border-border/80 bg-background/85 px-5 sm:px-8 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-300">
           {/* Left Container: Far-Left Entry Point + Logo */}
           <div className="flex items-center gap-3">
             <button
