@@ -177,7 +177,7 @@ function Landing() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_10%_0%,color-mix(in_oklab,var(--primary-soft)_60%,transparent),transparent),radial-gradient(40%_40%_at_100%_20%,color-mix(in_oklab,var(--accent)_20%,transparent),transparent)]" />
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-16 pt-12 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8 lg:pb-24 lg:pt-16">
           <div className="flex flex-col justify-center">
-            <span className="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full glass-card px-3.5 py-1.5 text-xs font-semibold text-muted-foreground shadow-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Verified 501(c)(3) · Audited
               Quarterly
             </span>
@@ -195,7 +195,7 @@ function Landing() {
             </p>
 
             {/* Quick donate chips */}
-            <div className="mt-8 rounded-2xl border border-border bg-card p-4 shadow-[var(--shadow-card)] sm:p-5">
+            <div className="mt-8 glass-card rounded-2xl p-4 shadow-[var(--shadow-glass)] sm:p-5">
               <div className="mb-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                 Give in seconds
               </div>
@@ -210,7 +210,7 @@ function Landing() {
                     className={`rounded-xl border px-3 py-3 text-sm font-semibold transition-all ${
                       amount === a && !custom
                         ? "border-primary bg-primary text-primary-foreground shadow-[var(--shadow-elegant)]"
-                        : "border-border bg-background text-foreground hover:border-primary/50"
+                        : "border-border bg-background/80 text-foreground hover:border-primary/50"
                     }`}
                   >
                     ${a}
@@ -224,7 +224,7 @@ function Landing() {
                     setCustom(e.target.value.replace(/[^\d]/g, ""));
                     setAmount("");
                   }}
-                  className="w-full rounded-xl border border-border bg-background px-3 py-3 text-center text-sm font-semibold placeholder:text-muted-foreground focus:border-primary focus:outline-none"
+                  className="w-full rounded-xl border border-border bg-background/80 px-3 py-3 text-center text-sm font-semibold placeholder:text-muted-foreground focus:border-primary focus:outline-none"
                 />
               </div>
               <a
@@ -236,7 +236,7 @@ function Landing() {
             </div>
 
             {/* Trust badges */}
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground">
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-muted-foreground font-medium">
               <span className="inline-flex items-center gap-1.5">
                 <ShieldCheck className="h-4 w-4 text-primary" /> Charity Navigator 100%
               </span>
@@ -260,7 +260,7 @@ function Landing() {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary-deep/85 via-primary-deep/30 to-transparent p-6 pt-24">
-                <div className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
+                <div className="rounded-2xl border border-white/20 bg-white/15 p-4 backdrop-blur-xl">
                   <div className="text-xs font-medium uppercase tracking-widest text-white/80">
                     Live · Right now
                   </div>
@@ -270,8 +270,8 @@ function Landing() {
                 </div>
               </div>
             </div>
-            <div className="absolute -right-3 -top-3 hidden rotate-3 rounded-2xl border border-border bg-card px-4 py-3 shadow-[var(--shadow-card)] md:block">
-              <div className="text-xs uppercase tracking-widest text-muted-foreground">
+            <div className="glass-card absolute -right-3 -top-3 hidden rotate-3 rounded-2xl px-4 py-3 shadow-[var(--shadow-glass)] md:block">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold">
                 Impact this month
               </div>
               <div className="text-2xl font-bold text-primary-deep">+128,402 lives</div>
@@ -301,7 +301,7 @@ function Landing() {
               <a
                 key={title}
                 href="#donate"
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-7 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]"
+                className="glass-card group relative overflow-hidden rounded-2xl p-7 shadow-[var(--shadow-glass)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[var(--shadow-elegant)]"
               >
                 <div className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--gradient-accent)] transition-transform duration-500 group-hover:scale-x-100" />
                 <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary-deep transition-colors group-hover:bg-[var(--gradient-hero)] group-hover:text-primary-foreground">
@@ -414,10 +414,10 @@ function Landing() {
               ].map((row) => (
                 <li
                   key={row.label}
-                  className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)]"
+                  className="glass-card rounded-2xl p-5 shadow-[var(--shadow-glass)]"
                 >
                   <div className="flex items-baseline justify-between">
-                    <div className="text-base font-semibold">{row.label}</div>
+                    <div className="text-base font-semibold text-foreground">{row.label}</div>
                     <div className="text-2xl font-bold text-primary-deep">{row.pct}%</div>
                   </div>
                   <div className="mt-1 text-sm text-muted-foreground">{row.desc}</div>
@@ -497,7 +497,7 @@ function Landing() {
             </h2>
           </div>
 
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-elegant)]">
+          <div className="mt-10 glass-card overflow-hidden rounded-3xl shadow-[var(--shadow-glass)]">
             <div className="p-6 sm:p-10">
               {/* Cadence toggle */}
               <div className="mx-auto grid w-full max-w-sm grid-cols-2 rounded-full bg-muted p-1">
