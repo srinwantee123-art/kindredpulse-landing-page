@@ -201,17 +201,67 @@ export function StatsPage() {
 
       <main className="flex-1 pt-24 pb-20">
         {/* Hero Header */}
-        <section className="relative px-4 sm:px-6 lg:px-8 py-12 text-center max-w-5xl mx-auto">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-primary shadow-xs">
-            <TrendingUp className="h-3.5 w-3.5" /> Verified 5-Year Financial & Impact Record
-          </span>
-          <h1 className="mt-5 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-            Graphical Impact & Financial Statistics
-          </h1>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl max-w-3xl mx-auto">
-            Explore multi-year growth trajectories, total ground deployment funds, and live 92.4%
-            direct programmatic allocation charts verified by quarterly audits.
-          </p>
+        <section className="relative overflow-hidden px-4 sm:px-6 lg:px-8 py-12 text-center max-w-7xl mx-auto">
+          {/* Side Ambient Glowing Orbs */}
+          <div className="pointer-events-none absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/20 blur-3xl" />
+          <div className="pointer-events-none absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-amber-400/20 blur-3xl" />
+
+          {/* Left Side Ambient Vector Grid */}
+          <div className="pointer-events-none absolute left-6 top-1/2 hidden -translate-y-1/2 lg:block">
+            <svg className="h-64 w-64 opacity-25" viewBox="0 0 200 200" fill="none">
+              <polygon
+                points="100,20 180,100 100,180 20,100"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="6 6"
+                className="text-primary"
+              />
+              <circle
+                cx="100"
+                cy="100"
+                r="45"
+                stroke="currentColor"
+                strokeWidth="1"
+                className="text-primary"
+              />
+            </svg>
+          </div>
+
+          {/* Right Side Ambient Vector Grid */}
+          <div className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 lg:block">
+            <svg className="h-64 w-64 opacity-25" viewBox="0 0 200 200" fill="none">
+              <circle
+                cx="100"
+                cy="100"
+                r="75"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+                className="text-accent"
+              />
+              <circle
+                cx="100"
+                cy="100"
+                r="35"
+                stroke="currentColor"
+                strokeWidth="1"
+                className="text-accent"
+              />
+            </svg>
+          </div>
+
+          <div className="relative max-w-4xl mx-auto z-10">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-primary shadow-xs">
+              <TrendingUp className="h-3.5 w-3.5" /> Verified 5-Year Financial & Impact Record
+            </span>
+            <h1 className="mt-5 text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Graphical Impact & Financial Statistics
+            </h1>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg lg:text-xl max-w-3xl mx-auto">
+              Explore multi-year growth trajectories, total ground deployment funds, and live 92.4%
+              direct programmatic allocation charts verified by quarterly audits.
+            </p>
+          </div>
 
           {/* Key KPI Cards */}
           <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">

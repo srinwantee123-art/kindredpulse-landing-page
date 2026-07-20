@@ -131,8 +131,97 @@ function PillarsPage() {
 
       {/* HERO SECTION */}
       <section className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-24">
+        {/* Ambient Side Radial Glow Orbs */}
+        <div className="pointer-events-none absolute -left-24 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/25 blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-amber-400/25 blur-3xl" />
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(50%_50%_at_50%_0%,color-mix(in_oklab,var(--primary-soft)_70%,transparent),transparent)]" />
-        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+
+        {/* Left Side Ambient Graphic SVG & Badge */}
+        <div className="pointer-events-none absolute left-6 top-1/2 hidden -translate-y-1/2 lg:block">
+          <svg className="h-64 w-64 opacity-25" viewBox="0 0 200 200" fill="none">
+            <circle
+              cx="100"
+              cy="100"
+              r="80"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeDasharray="6 6"
+              className="text-primary"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="50"
+              stroke="currentColor"
+              strokeWidth="1"
+              className="text-primary"
+            />
+            <circle cx="100" cy="100" r="20" fill="currentColor" className="text-primary/10" />
+            <path
+              d="M20 100 L180 100 M100 20 L100 180"
+              stroke="currentColor"
+              strokeWidth="0.75"
+              strokeDasharray="4 4"
+              className="text-primary"
+            />
+          </svg>
+        </div>
+
+        <div className="absolute left-6 xl:left-12 top-1/2 hidden -translate-y-1/2 lg:flex items-center gap-3 rounded-2xl border border-white/60 bg-white/70 p-3.5 shadow-xl backdrop-blur-md animate-pulse">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+            <ShieldCheck className="h-5 w-5" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-foreground">Verified 100% Audit</div>
+            <div className="text-[10px] font-semibold text-primary">501(c)(3) Certified NGO</div>
+          </div>
+        </div>
+
+        {/* Right Side Ambient Graphic SVG & Badge */}
+        <div className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 lg:block">
+          <svg className="h-64 w-64 opacity-25" viewBox="0 0 200 200" fill="none">
+            <rect
+              x="30"
+              y="30"
+              width="140"
+              height="140"
+              rx="20"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeDasharray="6 6"
+              className="text-accent"
+            />
+            <circle
+              cx="100"
+              cy="100"
+              r="60"
+              stroke="currentColor"
+              strokeWidth="1"
+              className="text-accent"
+            />
+            <path
+              d="M40 40 L160 160 M160 40 L40 160"
+              stroke="currentColor"
+              strokeWidth="0.75"
+              strokeDasharray="4 4"
+              className="text-accent"
+            />
+          </svg>
+        </div>
+
+        <div className="absolute right-6 xl:left-auto xl:right-12 top-1/2 hidden -translate-y-1/2 lg:flex items-center gap-3 rounded-2xl border border-white/60 bg-white/70 p-3.5 shadow-xl backdrop-blur-md animate-pulse">
+          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent/20 text-accent-foreground">
+            <TrendingUp className="h-5 w-5 text-accent" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-foreground">92.4% Direct Allocation</div>
+            <div className="text-[10px] font-semibold text-emerald-700">
+              Zero Administrative Overhead
+            </div>
+          </div>
+        </div>
+
+        <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8 z-10">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1 text-xs font-semibold uppercase tracking-widest text-primary shadow-xs">
             <ShieldCheck className="h-3.5 w-3.5" /> High-Impact Structural Philanthropy
           </span>
