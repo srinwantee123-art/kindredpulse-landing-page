@@ -227,18 +227,123 @@ function ImpactTrackerPage() {
           </div>
 
           {/* Simulated Geographic Map Component */}
-          <div className="relative h-96 w-full overflow-hidden rounded-3xl border border-border bg-slate-950 p-4 shadow-[var(--shadow-elegant)]">
-            {/* SVG World Map Grid Representation */}
-            <svg className="h-full w-full opacity-30" viewBox="0 0 1000 500" fill="none">
-              <path
-                d="M150 150 Q 200 100, 300 130 T 400 200 M 500 180 Q 600 140, 700 190 T 850 160 M 200 300 Q 250 350, 350 330 M 550 320 Q 650 380, 750 340 M 800 280 Q 850 320, 900 290"
-                stroke="oklch(0.78 0.16 75)"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
+          <div className="relative h-[440px] w-full overflow-hidden rounded-3xl border border-white/40 bg-gradient-to-br from-[#0E4D40] via-[#0E3B33] to-[#0A2B25] p-6 shadow-[var(--shadow-elegant)]">
+            {/* Top Right Live Telemetry Badge */}
+            <div className="absolute right-4 top-4 z-10 flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md">
+              <span className="h-2 w-2 rounded-full bg-amber-400 animate-pulse" />6 Field Networks
+              Live
+            </div>
+
+            {/* SVG World Map Grid & Landmasses Representation */}
+            <svg className="h-full w-full opacity-90" viewBox="0 0 1000 500" fill="none">
+              <defs>
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path
+                    d="M 40 0 L 0 0 0 40"
+                    fill="none"
+                    stroke="rgba(255, 255, 255, 0.06)"
+                    strokeWidth="1"
+                  />
+                </pattern>
+                <radialGradient id="landGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.15)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 0.02)" />
+                </radialGradient>
+              </defs>
+
+              {/* Grid Background */}
+              <rect width="1000" height="500" fill="url(#grid)" />
+
+              {/* Equator & Prime Meridian Grid Lines */}
+              <line
+                x1="0"
+                y1="250"
+                x2="1000"
+                y2="250"
+                stroke="rgba(255, 255, 255, 0.12)"
+                strokeWidth="1"
+                strokeDasharray="8 8"
               />
-              <circle cx="200" cy="180" r="80" fill="oklch(0.42 0.09 195 / 0.15)" />
-              <circle cx="580" cy="260" r="100" fill="oklch(0.42 0.09 195 / 0.15)" />
-              <circle cx="750" cy="220" r="90" fill="oklch(0.42 0.09 195 / 0.15)" />
+              <line
+                x1="500"
+                y1="0"
+                x2="500"
+                y2="500"
+                stroke="rgba(255, 255, 255, 0.12)"
+                strokeWidth="1"
+                strokeDasharray="8 8"
+              />
+
+              {/* Continent Outlines & Landmass Shapes */}
+              {/* North America */}
+              <path
+                d="M 120 100 Q 180 80, 260 110 T 320 180 T 260 260 T 160 240 T 100 160 Z"
+                fill="url(#landGlow)"
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="1.5"
+              />
+              {/* South America */}
+              <path
+                d="M 280 270 Q 340 280, 350 340 T 300 440 T 240 370 T 260 290 Z"
+                fill="url(#landGlow)"
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="1.5"
+              />
+              {/* Europe & Africa */}
+              <path
+                d="M 450 90 Q 550 70, 580 130 T 620 220 T 560 380 T 460 340 T 480 200 Z"
+                fill="url(#landGlow)"
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="1.5"
+              />
+              {/* Asia */}
+              <path
+                d="M 600 80 Q 750 60, 880 120 T 920 250 T 780 280 T 640 180 Z"
+                fill="url(#landGlow)"
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="1.5"
+              />
+              {/* Australia */}
+              <path
+                d="M 780 320 Q 860 310, 890 360 T 820 420 T 760 370 Z"
+                fill="url(#landGlow)"
+                stroke="rgba(255, 255, 255, 0.25)"
+                strokeWidth="1.5"
+              />
+
+              {/* Connecting Telemetry Arcs */}
+              <path
+                d="M 260 480 Q 420 300, 580 550 M 580 550 Q 660 400, 740 440 M 740 440 Q 790 480, 840 520 M 260 480 Q 400 360, 560 280"
+                stroke="#F39C12"
+                strokeWidth="1.75"
+                strokeDasharray="6 6"
+              />
+
+              {/* Glowing Impact Radius Rings */}
+              <circle
+                cx="580"
+                cy="275"
+                r="55"
+                fill="none"
+                stroke="rgba(243, 156, 18, 0.3)"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx="740"
+                cy="220"
+                r="45"
+                fill="none"
+                stroke="rgba(243, 156, 18, 0.3)"
+                strokeWidth="1.5"
+              />
+              <circle
+                cx="260"
+                cy="240"
+                r="40"
+                fill="none"
+                stroke="rgba(243, 156, 18, 0.3)"
+                strokeWidth="1.5"
+              />
             </svg>
 
             {/* Dynamic Map Hotspot Pins */}
